@@ -68,12 +68,13 @@ DATABASES = {
         'USER': 'Tourism_owner',
         'PASSWORD': 'npg_60jHaONMuotz',
         'HOST': 'ep-divine-meadow-a8caqzu0-pooler.eastus2.azure.neon.tech',
-        'PORT': '5432',
+        'PORT': '5432',  # Default PostgreSQL port
         'OPTIONS': {
-            'sslmode': 'require',
+            'sslmode': 'require',  # Ensures secure connection
         },
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
@@ -93,20 +94,25 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CORS SETTINGS
 CORS_ALLOWED_ORIGINS = [
-    "https://ominous-doodle-x5x574qqjr93vggx-8001.app.github.dev",
+    "https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev",
+    "https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev",
     "http://127.0.0.1:8001",
+    "http://127.0.0.1:8000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # If using authentication (cookies or sessions)
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://ominous-doodle-x5x574qqjr93vggx-8001.app.github.dev",
+    "https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev",
+    "http://127.0.0.1:8000",
+    "https://127.0.0.1:8000",
 ]
 
 CORS_ALLOW_HEADERS = [
     'content-type',
     'authorization',
     'x-requested-with',
+    'Access-Control-Allow-Origin',
 ]
 
 ALLOWED_HOSTS = ["*"]
