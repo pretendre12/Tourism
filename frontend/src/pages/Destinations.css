@@ -1,0 +1,50 @@
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title {
+    text-align: center;
+    color: #1565c0;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .destinations-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .destination-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 280px;
+  }
+  
+  .destination-image {
+    max-width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    margin-top: 10px;
+    object-fit: cover;
+  }
+  
+  h3 {
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  p {
+    font-size: 14px;
+    color: #666;
+  }
+  
