@@ -1,13 +1,36 @@
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();  // Get the current route
+
+  const navItems = [
+    { name: "HOMEPAGE", path: "/" },
+    { name: "NATURE ESCAPES", path: "/nature-escapes" },
+    { name: "THRILLING ADVENTURES", path: "/thrilling-adventures" },
+    { name: "CULTURE", path: "/culture" },
+    { name: "DINING SPOTS", path: "/dining-spots" },
+    { name: "LOCAL DELICACIES", path: "/local-delicacies" },
+    { name: "PLACE TO STAY", path: "/place-to-stay" },
+  ];
+
   return (
-    <nav className="p-4 bg-blue-600 text-white flex justify-between">
-      <h1 className="text-2xl font-bold">ExploreWorld</h1>
-      <div>
-        <Link className="mr-4" to="/">Home</Link>
-        <Link to="/destinations">Destinations</Link>
-      </div>
+    <nav className=" py-4 flex flex-col md:flex-row justify-center space-x-4 font-semibold">
+      {navItems.map((item) => {
+        // Check if the current location is the same as the path
+        const isActive = location.pathname === item.path;
+
+        return (
+          <a
+            key={item.name}
+            href={item.path}
+            className={`text-gray-700 px-3 py-2 transition-all duration-300 ${
+              isActive ? "bg-gray-300 rounded-full" : "hover:bg-gray-300 hover:rounded-full"
+            }`}
+          >
+            {item.name}
+          </a>
+        );
+      })}
     </nav>
   );
 };
