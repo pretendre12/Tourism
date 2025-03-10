@@ -7,6 +7,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -119,6 +122,8 @@ CORS_ALLOW_HEADERS = [
     'authorization',
     'x-requested-with',
     'Access-Control-Allow-Origin',
+    "content-disposition",
+    "accept",
 ]
 
 ALLOWED_HOSTS = ["*"]
