@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Destinations from "./Destinations";
+
 
 interface Destination {
   id: number;
@@ -38,10 +38,10 @@ const Home = () => {
         <nav className="absolute top-0 left-0 right-0 flex justify-between items-center p-4">
           <img
             alt="Logo"
-            className="h-12"
-            src="https://storage.googleapis.com/a1aa/image/RYuo_89p36p8SdZyHVG6jRZ7QfbbuNdxbsVBhAB2KEg.jpg"
+            className="h-20"
+            src="https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev/media/destinations/logo.png"
           />
-          <ul className="flex space-x-8 text-lg">
+          <ul className="flex space-x-10 text-lg">
             <li><a className="hover:text-gray-300" href="#">Home</a></li>
             <li><a className="hover:text-gray-300" href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/destinations">Destinations</a></li>
             <li><a className="hover:text-gray-300" href="#">Blog</a></li>

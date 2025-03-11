@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "../pages/Destinations.css";
+import BukidnonMap from "./BukidnonMap";
 
 interface Destination {
   id: number;
@@ -28,10 +29,12 @@ const Destinations = () => {
   }, []);
 
   // Intersection Observer
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
+  const { ref: culturalRef, inView: culturalInView } = useInView({ triggerOnce: true, threshold: 0.2 });
+  const { ref: danceRef, inView: danceInView } = useInView({ triggerOnce: true, threshold: 0.2 });
+  const { ref: DiningRef, inView: DiningInView} = useInView({ triggerOnce: true, threshold: 0.2 });
+  const { ref: stayRef, inView: stayInView } = useInView({ triggerOnce: true, threshold: 0.2 });
+
+
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -115,55 +118,166 @@ const Destinations = () => {
 
       {/* Cultural Experience Section */}
       <section className="relative w-screen my-12 rounded-xl overflow-hidden shadow-lg">
-        {/* Background Image */}
-        <img
-          src={`${BACKEND_URL}/media/destinations/tribe.png`}
-          alt="Bukidnon Festival"
-          className="w-full h-[500px] object-cover"
-        />
+        <img src={`${BACKEND_URL}/media/destinations/tribe.png`} alt="Bukidnon Festival" className="w-full h-[500px] object-cover" />
 
-        {/* Animated Overlay Content */}
         <motion.div
-          ref={ref}
+          ref={culturalRef}
           initial={{ opacity: 0, x: 50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          animate={culturalInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="absolute right-0 top-0 h-full w-1/2 bg-black/50 backdrop-blur-[2px] 
-                     flex flex-col justify-center px-8 md:px-16"
+          className="absolute right-0 top-0 h-full w-1/2 bg-black/50 backdrop-blur-[2px] flex flex-col justify-center px-8 md:px-16"
         >
           <h2 className="text-white text-4xl md:text-5xl font-extrabold mb-4">
             <span className="text-gray-300">Dive into Tradition:</span>
           </h2>
-          <h6 className="text-white text-2xl md:text-2xl font-extrabold mb-4 pl-4 md:pl-30">
-            Bukidnon's Festivals and Exciting Festivities{" "}
-            <span className="font-bold text-yellow-300">Await!</span>
+          <h6 className="text-white text-2xl font-extrabold mb-4">
+            Bukidnon's Festivals and Exciting Festivities <span className="font-bold text-yellow-300">Await!</span>
           </h6>
 
-          {/* Image Gallery */}
           <div className="flex space-x-10 mt-6">
-            <img
-              src={`${BACKEND_URL}/media/destinations/tribe1.jpeg`}
-              alt="Festival 1"
-              className="w-40 h-30 object-cover"
-            />
-            <img
-              src={`${BACKEND_URL}/media/destinations/tribe2.jpeg`}
-              alt="Festival 2"
-              className="w-40 h-30 object-cover"
-            />
-            <img
-              src={`${BACKEND_URL}/media/destinations/tribe3.jpeg`}
-              alt="Festival 3"
-              className="w-40 h-30 object-cover"
-            />
+            <img src={`${BACKEND_URL}/media/destinations/tribe1.jpeg`} alt="Festival 1" className="w-40 h-30 object-cover" />
+            <img src={`${BACKEND_URL}/media/destinations/tribe2.jpeg`} alt="Festival 2" className="w-40 h-30 object-cover" />
+            <img src={`${BACKEND_URL}/media/destinations/tribe3.jpeg`} alt="Festival 3" className="w-40 h-30 object-cover" />
           </div>
 
-          {/* Explore Button */}
           <button className="absolute bottom-4 right-4 bg-gray-200 text-gray-700 px-6 py-2 rounded-full shadow-lg hover:bg-gray-300 transition">
             Explore
           </button>
         </motion.div>
       </section>
+
+      {/* Foods */}
+      <section className="relative w-screen my-6 rounded-xl overflow-hidden shadow-lg">
+        <img src={`${BACKEND_URL}/media/destinations/pie.png`} alt="Bukidnon Traditional Dance" className="w-full h-[500px] object-cover" />
+
+        <motion.div
+          ref={danceRef}
+          initial={{ opacity: 0, x: -50 }}
+          animate={danceInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="absolute left-0 top-0 h-full w-1/2 bg-black/50 backdrop-blur-[2px] flex flex-col justify-center px-8 md:px-16"
+        >
+          <h2 className="tienne-black text-white text-4xl md:text-5xl font-extrabold mb-4">
+            <span className="text-gray-300">SAVOR BUKIDNON</span>
+          </h2>
+          <h6 className="tienne-bold text-white text-2xl font-extrabold mb-4">
+            A taste of <span className="font-bold text-yellow-300">TRADITIONS</span> and <span className="font-bold text-yellow-300">HERITAGE</span>
+          </h6>
+
+
+        </motion.div>
+      </section>
+
+      {/* Dining Spot Section */}
+      <section className="relative w-screen my-6 rounded-xl overflow-hidden shadow-lg">
+        <img 
+          src={`${BACKEND_URL}/media/destinations/Dining.jpeg`} 
+          alt="Bukidnon Dining Spot" 
+          className="w-full h-[500px] object-cover" 
+        />
+
+        <motion.div
+          ref={DiningRef}
+          initial={{ opacity: 0, y: -50 }} // Start from top
+          animate={DiningInView ? { opacity: 1, y: 0 } : {}} // Slide down
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="absolute inset-0 bg-black/50 backdrop-blur-[2px] flex flex-col justify-center items-center px-8 md:px-16"
+        >
+          <h2 className="tienne-black text-white text-4xl md:text-5xl font-extrabold mb-4 text-center">
+            Discover the Best <span className="text-gray-300">Dining Spots</span>
+          </h2>
+          <h6 className="tienne-bold text-white text-2xl font-extrabold mb-4 text-center">
+            Indulge in <span className="font-bold text-yellow-300">Authentic</span> Flavors and <span className="font-bold text-yellow-300">Culinary Delights</span>
+          </h6>
+
+          <button className="mt-4 bg-yellow-300 text-gray-900 px-6 py-2 rounded-full shadow-lg hover:bg-yellow-400 transition">
+            Explore Dining Spots
+          </button>
+        </motion.div>
+      </section>
+
+      {/* Stay */}
+      <section className="relative w-screen my-6 rounded-xl overflow-hidden shadow-lg">
+        <img 
+          src={`${BACKEND_URL}/media/destinations/alpine.png`} 
+          alt="Bukidnon Traditional Dance" 
+          className="w-full h-[500px] object-cover" 
+        />
+
+        <motion.div
+          ref={stayRef}
+          initial={{ opacity: 0, y: 50 }} // Start from below
+          animate={stayInView ? { opacity: 1, y: 0 } : {}} // Slide up when in view
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="absolute inset-0 bg-black/50 backdrop-blur-[2px] flex flex-col justify-center px-8 md:px-16"
+        >
+          <h2 className="tienne-black text-white text-4xl md:text-5xl font-extrabold mb-4">
+            <span className="text-gray-300">Discover the Perfect Place</span>
+          </h2>
+          <h2 className="tienne-black text-white text-4xl md:text-5xl font-extrabold mb-4">
+            to Stay in<span className="font-bold text-yellow-300"> BUKIDNON</span>
+          </h2>
+        </motion.div>
+      </section>
+
+      <div>
+        <BukidnonMap />
+      </div>
+
+      <section className="w-full flex flex-col items-center my-12 px-4">
+      {/* Title */}
+      <h2 className="text-center text-3xl font-extrabold text-black md:text-4xl">
+        Featured Blog & Travel Stories
+      </h2>
+
+      {/* Description */}
+      <p className="text-lg text-center text-gray-600 max-w-5xl mt-2">
+        Experience Bukidnon like never before as you uncover hidden gems, immerse in vibrant 
+        festivals, and explore captivating local stories—all through the eyes of fellow travelers.
+      </p>
+
+      {/* Blog Cards Container */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-6xl">
+        
+        {/* Kaamulan Festival Blog */}
+        <div className="bg-[#D3C5AD] shadow-lg rounded-lg overflow-hidden">
+          <img 
+            src={`${BACKEND_URL}/media/destinations/fuck.jpeg`} 
+            alt="Kaamulan Festival" 
+            className="w-full h-56 object-cover"
+          />
+          <div className="p-4">
+            <h3 className="text-lg font-bold">A First-Timer’s Guide to the Kaamulan Festival</h3>
+            <p className="text-gray-700 mt-2">
+              "Experience the vibrant culture, indigenous traditions, and lively celebrations of the 
+              Kaamulan Festival in the heart of Bukidnon!"
+            </p>
+            <p className="text-sm text-gray-500 mt-4">Read More</p>
+          </div>
+        </div>
+
+        {/* Lover’s Lane Blog */}
+        <div className="bg-[#B2A28E] shadow-lg rounded-lg overflow-hidden">
+          <img 
+            src={`${BACKEND_URL}/media/destinations/fuck1.jpeg`} 
+            alt="Lover’s Lane" 
+            className="w-full h-56 object-cover"
+          />
+          <div className="p-4">
+            <h3 className="text-lg font-bold">Explore the Romantic Charm of Lover’s Lane!</h3>
+            <p className="text-gray-700 mt-2">
+              "Escape to the enchanting beauty of Lover’s Lane—where winding paths and serene landscapes 
+              create the perfect romantic getaway!"
+            </p>
+            <p className="text-sm text-gray-500 mt-4">Read More</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
     </div>
   );
 };

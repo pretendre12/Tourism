@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Destinations from "./pages/Destinations";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import BukidnonMap from "./pages/BukidnonMap";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function MainLayout() {
         <Route path="/" element={<Home />} />
         <Route path="/destinations" element={<Destinations />} />
       </Routes>
+      {/*{location.pathname == "/destinations" && <BukidnonMap />} */}
       {location.pathname !== "/" && <Footer />}
     </>
   );
