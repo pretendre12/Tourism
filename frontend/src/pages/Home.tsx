@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Destinations from "./Destinations";
 
 interface Destination {
   id: number;
@@ -48,8 +49,13 @@ const Home = () => {
             <li><a className="hover:text-gray-300" href="#">About Us</a></li>
           </ul>
         </nav>
-        <h1 className="text-6xl script-font text-white">Explore</h1>
-        <h2 className="text-8xl font-bold text-white">BUKIDNON</h2>
+        <h1 className="text-6xl dancing-script text-white">E x p l o r e</h1>
+
+        <img
+          src={`${BACKEND_URL}/media/destinations/Bukidnon.png`}
+          alt="BUKIDNON"
+          className="w-auto h-80 md:h-70 object-contain"
+        />
       </div>
     </div>
   );  
