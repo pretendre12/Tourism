@@ -1,4 +1,4 @@
-from django.db import models  # <-- ADD THIS LINE
+from django.db import models  
 
 class Destination(models.Model):
     name = models.CharField(max_length=255)
@@ -7,3 +7,16 @@ class Destination(models.Model):
 
     def __str__(self):
         return self.name
+
+class TouristSpot(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    image1 = models.ImageField(upload_to='tourist_spots/')
+    image2 = models.ImageField(upload_to='tourist_spots/', blank=True, null=True)
+    image3 = models.ImageField(upload_to='tourist_spots/', blank=True, null=True)
+    activities = models.TextField()  # Store as a list separated by commas
+    cultural_significance = models.TextField()
+    travel_tips = models.TextField()
+
+    def __str__(self):
+        return self.title

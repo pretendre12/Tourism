@@ -10,6 +10,10 @@ MEDIA_URL = '/media/'
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+import os
+if os.getenv("GITHUB_CODESPACES"):
+    MEDIA_URL = "https://your-codespace-url/media/"
+
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,6 +40,7 @@ INSTALLED_APPS = [
 
     # Your app
     'tourism',
+
 ]
 
 MIDDLEWARE = [
