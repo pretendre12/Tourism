@@ -9,7 +9,7 @@ const Footer = () => {
         {/* Left Section - Logo & Socials */}
         <div className="max-w-xs">
           <h2 className="text-lg font-bold">BUKIDExplorer</h2>
-          <p className="text-sm mt-2">
+          <p className="!text-white text-sm mt-2">\
             Experience the breathtaking landscapes and rich cultural heritage of the highland paradise of the Philippines.
           </p>
           <div className="flex gap-4 mt-4 text-2xl">

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "../pages/Destinations.css";
 import BukidnonMap from "./BukidnonMap";
+import Loader from "./Loader"; 
 
 interface Destination {
   id: number;
@@ -17,6 +18,9 @@ const BACKEND_URL = "https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.
 
 const Destinations = () => {
   const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
 
   useEffect(() => {
     axios
@@ -24,8 +28,13 @@ const Destinations = () => {
       .then((response) => {
         console.log("Fetched destinations:", response.data);
         setDestinations(response.data);
+        setLoading(false); // Set loading to false after data is fetched
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setError("Failed to load destinations");
+        setLoading(false);
+      });
   }, []);
 
   // Intersection Observer
@@ -34,7 +43,10 @@ const Destinations = () => {
   const { ref: DiningRef, inView: DiningInView} = useInView({ triggerOnce: true, threshold: 0.2 });
   const { ref: stayRef, inView: stayInView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
+  // Show the loader while data is loading
+  if (loading) return <Loader />;
 
+  if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {error}</p>;
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -109,9 +121,12 @@ const Destinations = () => {
               <span>{dest.name}</span>
             </div>
 
-            <button className="absolute bottom-2 right-2 bg-gray-200 text-gray-700 px-4 py-2 rounded-full shadow-md hover:bg-gray-300 transition">
-              Discover
-            </button>
+            <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/tourist-spots">
+              <button className="absolute bottom-2 right-2 bg-gray-200 text-gray-700 px-4 py-2 rounded-full shadow-md hover:bg-gray-300 transition">
+                Discover
+              </button>
+            </a>
+
           </div>
         ))}
       </section>

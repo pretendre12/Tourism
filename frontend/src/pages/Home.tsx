@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import Loader from "./Loader";
 
 interface Destination {
   id: number;
@@ -13,6 +13,8 @@ const BACKEND_URL = "https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.
 
 const Home = () => {
   const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     axios
@@ -20,9 +22,19 @@ const Home = () => {
       .then((response) => {
         console.log("Fetched destinations:", response.data);
         setDestinations(response.data);
+        setLoading(false); // Set loading to false after data is fetched
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setError("Failed to load destinations");
+        setLoading(false);
+      });
   }, []);
+
+// Show the loader while data is loading
+if (loading) return <Loader />;
+
+if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {error}</p>;
 
   return (
     <div className="bg-gray-900 text-white min-h-screen relative">
