@@ -4,7 +4,7 @@ import Destinations from "./pages/Destinations";
 import TouristSpots from "./pages/TouristSpots";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Loader from "./pages/Loader";
+import ThrillingAdventures from "./pages/ThrillingAdventures";
 
 function App() {
   return (
@@ -28,8 +28,9 @@ function MainLayout() {
         <Route path="/" element={<Home />} />
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/tourist-spots" element={<TouristSpots />} />
+        <Route path="/thrilling-adventures" element={<ThrillingAdventures />} />
       </Routes>
-      {/*{location.pathname == "/destinations" && <BukidnonMap />} */}
+      {/*{location.pathname == "/destinations" && <BukidnonMaps />} */}
       {location.pathname !== "/" && <Footer />}
     </>
   );
