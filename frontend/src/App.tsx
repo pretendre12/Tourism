@@ -5,6 +5,7 @@ import TouristSpots from "./pages/TouristSpots";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ThrillingAdventures from "./pages/ThrillingAdventures";
+import Culture from "./pages/Culture";
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function MainLayout() {
     <>
 
       {/* Show Navbar only if NOT on Home, becuase i dont want it in the top of my home page but in the middle*/}
-      {location.pathname !== "/" && location.pathname !== "/thrilling-adventures" &&
+      {location.pathname !== "/" && 
+      location.pathname !== "/thrilling-adventures" &&
+      location.pathname !== "/culture" &&
       location.pathname !== "/destinations" && <Navbar />}
 
       <Routes>
@@ -29,6 +32,7 @@ function MainLayout() {
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/tourist-spots" element={<TouristSpots />} />
         <Route path="/thrilling-adventures" element={<ThrillingAdventures />} />
+        <Route path="/culture" element={<Culture />} />
       </Routes>
       {/*{location.pathname == "/destinations" && <BukidnonMaps />} */}
       {location.pathname !== "/" && <Footer />}
