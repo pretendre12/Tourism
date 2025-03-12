@@ -61,9 +61,11 @@ const Destinations = () => {
 
         {/* Text Overlay */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-          <h1 className="text-white text-8xl font-extrabold tracking-wide bg-opacity-20 backdrop-blur-lg px-6 py-2 rounded-lg">
-            BUKIDNON
-          </h1>
+        <img
+          src={`${BACKEND_URL}/media/destinations/Bukidnon.png`}
+          alt="BUKIDNON"
+          className="w-auto h-80 md:h-70 object-contain"
+        />
         </div>
       </header>
 

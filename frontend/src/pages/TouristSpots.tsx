@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "./Loader";
+import { motion } from "framer-motion"; // Added for animations
 
 interface TouristSpot {
   id: number;
@@ -21,6 +22,7 @@ const TouristSpots = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [currentSpotIndex, setCurrentSpotIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // Track slide direction
 
   useEffect(() => {
     axios
@@ -37,18 +39,28 @@ const TouristSpots = () => {
       });
   }, []);
 
-  if (loading) return <Loader />; // Show the loader until data is loaded
+  if (loading) return <Loader />;
   if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {error}</p>;
 
   const spot = spots[currentSpotIndex];
 
   return (
     <div className="w-full min-h-screen bg-gray-100 flex flex-col">
-      {/* Title */}
-      <h1 className="text-5xl font-bold text-center mt-6">{spot.title.toUpperCase()}</h1>
+      {/* Animated Container */}
+      <motion.div
+        key={spot.id}
+        initial={{ opacity: 0, x: direction === 1 ? 100 : -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: direction === 1 ? -100 : 100 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Title */}
+        <h1 className="text-5xl font-bold font-serif text-center mt-6">
+          {spot.title.toUpperCase()}
+        </h1>
 
-      {/* Image Layout */}
-      <div className="flex flex-col lg:flex-row gap-6 max-w-screen-2xl mx-auto p-6">
+        {/* Image Layout */}
+        <div className="flex flex-col lg:flex-row gap-6 max-w-screen-2xl mx-auto px-50">
         {/* Large Left Image */}
         <div className="lg:w-2/3">
           {spot.image1 && (
@@ -79,41 +91,47 @@ const TouristSpots = () => {
         </div>
       </div>
 
-      {/* Text Content */}
-      <div className="max-w-screen-lg mx-auto px-6">
-        <section className="mt-8">
-          <h2 className="text-2xl font-semibold">About</h2>
-          <p className="text-gray-700 mt-2 leading-relaxed">{spot.description}</p>
-        </section>
+        {/* Text Content */}
+        <div className="max-w-screen-lg mx-auto px-6">
+          <section className="mt-8">
+            <h2 className="text-2xl font-serif">About</h2>
+            <p className="text-gray-700 mt-2 leading-relaxed whitespace-pre-line font-serif">{spot.description}</p>
+          </section>
 
-        <section className="mt-8">
-          <h2 className="text-2xl font-semibold">Things to Do at {spot.title.toUpperCase()}</h2>
-          <p className="text-gray-700 mt-2 leading-relaxed">{spot.activities}</p>
-        </section>
+          <section className="mt-8">
+            <h2 className="text-2xl font-serif">Things to Do at {spot.title.toUpperCase()}</h2>
+            <p className="text-gray-700 mt-2 leading-relaxed whitespace-pre-line font-serif">{spot.activities}</p>
+          </section>
 
-        <section className="mt-8">
-          <h2 className="text-2xl font-semibold">Cultural and Historical Significance</h2>
-          <p className="text-gray-700 mt-2 leading-relaxed">{spot.cultural_significance}</p>
-        </section>
+          <section className="mt-8">
+            <h2 className="text-2xl font-serif">Cultural and Historical Significance</h2>
+            <p className="text-gray-700 mt-2 leading-relaxed whitespace-pre-line font-serif">{spot.cultural_significance}</p>
+          </section>
 
-        <section className="mt-8">
-          <h2 className="text-2xl font-semibold">Plan Your Visit</h2>
-          <p className="text-gray-700 mt-2 leading-relaxed">{spot.travel_tips}</p>
-        </section>
-      </div>
+          <section className="mt-8">
+            <h2 className="text-2xl font-serif">Plan Your Visit</h2>
+            <p className="text-gray-700 mt-2 leading-relaxed whitespace-pre-line font-serif">{spot.travel_tips}</p>
+          </section>
+        </div>
+      </motion.div>
 
       {/* Navigation Buttons */}
       <div className="flex justify-between max-w-screen-lg mx-auto p-6 mt-6 gap-50">
         <button
-          onClick={() => setCurrentSpotIndex((prev) => Math.max(prev - 1, 0))}
+          onClick={() => {
+            setDirection(1); // Slide left (Back)
+            window.scrollTo(0, 0);
+            setCurrentSpotIndex((prev) => Math.max(prev - 1, 0));
+          }}
           className="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-700 disabled:bg-gray-300"
           disabled={currentSpotIndex === 0}
         >
           Back
         </button>
+
         <button
           onClick={() => {
-            // Scroll to the top of the page
+            setDirection(-1); // Slide right (Next)
             window.scrollTo(0, 0);
             setCurrentSpotIndex((prev) => Math.min(prev + 1, spots.length - 1));
           }}
@@ -122,7 +140,6 @@ const TouristSpots = () => {
         >
           Next
         </button>
-
       </div>
     </div>
   );
