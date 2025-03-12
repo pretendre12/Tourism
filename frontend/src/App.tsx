@@ -21,7 +21,7 @@ function MainLayout() {
     <>
 
       {/* Show Navbar only if NOT on Home, becuase i dont want it in the top of my home page but in the middle*/}
-      {location.pathname !== "/" &&
+      {location.pathname !== "/" && location.pathname !== "/thrilling-adventures" &&
       location.pathname !== "/destinations" && <Navbar />}
 
       <Routes>
