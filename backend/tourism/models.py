@@ -20,3 +20,15 @@ class TouristSpot(models.Model):
 
     def __str__(self):
         return self.title
+
+from django.db import models
+
+from django.db import models
+
+class ThrillingAdventure(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    highlights = models.TextField()
+    image1 = models.ImageField(upload_to='thrilling_adventures/', null=True, blank=True)
+    image2 = models.ImageField(upload_to='thrilling_adventures/', null=True, blank=True)
+    image3 = models.ImageField(upload_to='thrilling_adventures/', null=True, blank=True)

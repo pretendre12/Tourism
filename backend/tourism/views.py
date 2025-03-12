@@ -1,8 +1,9 @@
 from django.http import JsonResponse
 from django.views import View
 from rest_framework import viewsets  # ✅ Import viewsets for DRF
-from tourism.serializers import TouristSpotSerializer  # ✅ Correct
-from tourism.models import Destination, TouristSpot  # ✅ Correct
+from tourism.serializers import TouristSpotSerializer, ThrillingAdventureSerializer  # ✅ Correct
+from tourism.models import Destination, TouristSpot, ThrillingAdventure  # ✅ Correct
+
 
 
 # ✅ Class-based view for fetching Destination list
@@ -20,3 +21,7 @@ def destination_list(request):
 class TouristSpotViewSet(viewsets.ModelViewSet):
     queryset = TouristSpot.objects.all()
     serializer_class = TouristSpotSerializer
+
+class ThrillingAdventureViewSet(viewsets.ModelViewSet):
+    queryset = ThrillingAdventure.objects.all()
+    serializer_class = ThrillingAdventureSerializer
