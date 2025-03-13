@@ -184,10 +184,11 @@ const Culture = () => {
                     <h2 className="text-white tienne-black text-4xl md:text-5xl font-extrabold mb-4 text-center">
                         F E S T I V A L S
                     </h2>
-
-                    <button className="mt-4 bg-white text-gray-900 px-5 py-0.5 rounded-full shadow-lg hover:bg-yellow-400 transition text-lg w-fit mx-auto">
-                        Explore
-                    </button>
+                    <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/festival">
+                        <button className="mt-4 bg-white text-gray-900 px-5 py-0.5 rounded-full shadow-lg hover:bg-yellow-400 transition text-lg w-fit ml-175">
+                            Explore
+                        </button>
+                    </a>
                 </motion.div>
             </section>
 

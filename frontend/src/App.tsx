@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import ThrillingAdventures from "./pages/ThrillingAdventures";
 import Culture from "./pages/Culture";
 import Articrafts from "./pages/Articracfts";
+import Festival from "./pages/Festival";
 
 
 function App() {
@@ -28,6 +29,7 @@ function MainLayout() {
       location.pathname !== "/thrilling-adventures" &&
       location.pathname !== "/culture" &&
       location.pathname !== "/articrafts" &&
+      location.pathname !== "/festival" &&
       location.pathname !== "/destinations" && <Navbar />}
 
       <Routes>
@@ -37,6 +39,7 @@ function MainLayout() {
         <Route path="/thrilling-adventures" element={<ThrillingAdventures />} />
         <Route path="/culture" element={<Culture />} />
         <Route path="/articrafts" element={<Articrafts />} />
+        <Route path="/festival" element={<Festival />} />
       </Routes>
       {/*{location.pathname == "/destinations" && <BukidnonMaps />} */}
       {location.pathname !== "/" && <Footer />}
