@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
@@ -21,6 +21,9 @@ const Destinations = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Reference for BukidnonMap
+  const mapRef = useRef<HTMLDivElement | null>(null);
+
 
   useEffect(() => {
     axios
@@ -37,11 +40,22 @@ const Destinations = () => {
       });
   }, []);
 
+  // Function to scroll to the map section
+  const scrollToMap = () => {
+    if (mapRef.current) {
+      mapRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+
   // Intersection Observer
   const { ref: culturalRef, inView: culturalInView } = useInView({ triggerOnce: true, threshold: 0.2 });
   const { ref: danceRef, inView: danceInView } = useInView({ triggerOnce: true, threshold: 0.2 });
   const { ref: DiningRef, inView: DiningInView} = useInView({ triggerOnce: true, threshold: 0.2 });
   const { ref: stayRef, inView: stayInView } = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  
+
 
   // Show the loader while data is loading
   if (loading) return <Loader />;
@@ -118,7 +132,10 @@ const Destinations = () => {
               className="w-full h-60 object-cover rounded-xl shadow-lg"
             />
 
-            <div className="absolute top-2 left-2 bg-blue-100 text-blue-600 px-3 py-1 text-sm rounded-full flex items-center space-x-1">
+            <div
+              className="absolute top-2 left-2 bg-blue-100 text-blue-600 px-3 py-1 text-sm rounded-full flex items-center space-x-1 cursor-pointer"
+              onClick={scrollToMap} // Added onClick event
+            >
               <span>📍</span>
               <span>{dest.name}</span>
             </div>
@@ -237,7 +254,7 @@ const Destinations = () => {
         </motion.div>
       </section>
 
-      <div>
+      <div ref={mapRef}>
         <BukidnonMap />
       </div>
 

@@ -10,7 +10,7 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ title, images = [], children, onClose }) => {
     return (
-        <div className="fixed inset-0 bg-opacity-70 flex items-center justify-center z-50">
+        <div className="overflow-auto fixed inset-0 bg-opacity-70 flex bg-black/50 backdrop-blur-md items-center justify-center z-50">
             <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }} 
                 animate={{ opacity: 1, scale: 1 }} 
