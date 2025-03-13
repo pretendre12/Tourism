@@ -96,6 +96,7 @@ const Destinations = () => {
       {/* Adventure Options */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-16 pb-6">
         <div className="relative">
+        <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/tourist-spots">
           <img
             src={`${BACKEND_URL}/media/destinations/mtmadulag.jpeg`}
             alt="Nature Escapes"
@@ -104,9 +105,11 @@ const Destinations = () => {
           <div className="absolute inset-0 bg-opacity-50 flex items-end justify-start p-4">
             <h3 className="!text-white text-2xl font-bold">Nature Escapes</h3>
           </div>
+          </a>
         </div>
 
         <div className="relative">
+        <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/thrilling-adventures">
           <img
             src={`${BACKEND_URL}/media/destinations/challenges.png`}
             alt="Thrilling Adventures"
@@ -115,6 +118,7 @@ const Destinations = () => {
           <div className="absolute inset-0 bg-opacity-50 flex items-end justify-start p-4">
             <h3 className="!text-white text-2xl font-bold">Thrilling Adventures</h3>
           </div>
+          </a>
         </div>
       </section>
 
@@ -173,10 +177,11 @@ const Destinations = () => {
             <img src={`${BACKEND_URL}/media/destinations/tribe2.jpeg`} alt="Festival 2" className="w-40 h-30 object-cover" />
             <img src={`${BACKEND_URL}/media/destinations/tribe3.jpeg`} alt="Festival 3" className="w-40 h-30 object-cover" />
           </div>
-
+          <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/culture">
           <button className="absolute bottom-4 right-4 bg-gray-200 text-gray-700 px-6 py-2 rounded-full shadow-lg hover:bg-gray-300 transition">
             Explore
           </button>
+          </a>
         </motion.div>
       </section>
 
@@ -260,12 +265,12 @@ const Destinations = () => {
 
       <section className="w-full flex flex-col items-center my-12 px-4">
       {/* Title */}
-      <h2 className="text-center text-3xl font-extrabold text-black md:text-4xl">
+      <h2 className="text-center text-3xl font-extrabold text-black md:text-4xl font-serif">
         Featured Blog & Travel Stories
       </h2>
 
       {/* Description */}
-      <p className="text-lg text-center text-gray-600 max-w-5xl mt-2">
+      <p className="text-lg text-center text-gray-600 max-w-5xl mt-2 font-serif">
         Experience Bukidnon like never before as you uncover hidden gems, immerse in vibrant 
         festivals, and explore captivating local stories—all through the eyes of fellow travelers.
       </p>
@@ -281,8 +286,8 @@ const Destinations = () => {
             className="w-full h-56 object-cover"
           />
           <div className="p-4">
-            <h3 className="text-lg font-bold">A First-Timer’s Guide to the Kaamulan Festival</h3>
-            <p className="text-gray-700 mt-2">
+            <h3 className="text-lg font-bold font-serif">A First-Timer’s Guide to the Kaamulan Festival</h3>
+            <p className="text-gray-700 mt-2 font-serif">
               "Experience the vibrant culture, indigenous traditions, and lively celebrations of the 
               Kaamulan Festival in the heart of Bukidnon!"
             </p>
@@ -298,8 +303,8 @@ const Destinations = () => {
             className="w-full h-56 object-cover"
           />
           <div className="p-4">
-            <h3 className="text-lg font-bold">Explore the Romantic Charm of Lover’s Lane!</h3>
-            <p className="text-gray-700 mt-2">
+            <h3 className="text-lg font-serif">Explore the Romantic Charm of Lover’s Lane!</h3>
+            <p className="text-gray-700 mt-2 font-serif">
               "Escape to the enchanting beauty of Lover’s Lane—where winding paths and serene landscapes 
               create the perfect romantic getaway!"
             </p>

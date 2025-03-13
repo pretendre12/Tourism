@@ -28,12 +28,12 @@ const BukidnonMap: React.FC = () => {
   return (
     <section className="w-full flex flex-col items-center my-12 px-4">
       {/* Title */}
-      <h1 className="text-center text-4xl font-extrabold text-black md:text-5xl">
+      <h1 className="text-center text-4xl font-serif text-black md:text-5xl">
         EXPLORE BUKIDNON
       </h1>
 
       {/* Description */}
-      <h6 className="text-xl text-center text-gray-600 md:text-2xl mt-2 max-w-3xl mx-auto">
+      <h6 className="text-xl text-center font-serif text-gray-600 md:text-2xl mt-2 max-w-3xl mx-auto">
         Discover breathtaking nature spots, adventure parks, and cultural landmarks in Bukidnon. 
         Click on the map to explore destinations and get directions!
       </h6>
