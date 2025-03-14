@@ -10,6 +10,7 @@ import Articrafts from "./pages/Articracfts";
 import Festival from "./pages/Festival";
 import Delicacies from "./pages/Delicacies";
 import Stay from "./pages/Stay";
+import Dining from "./pages/Dining";
 
 
 function App() {
@@ -46,6 +47,7 @@ function MainLayout() {
         <Route path="/festival" element={<Festival />} />
         <Route path="/delicacies" element={<Delicacies />} />
         <Route path="/stay" element={<Stay />} />
+        <Route path="/dining" element={<Dining />} />
       </Routes>
       {/*{location.pathname == "/destinations" && <BukidnonMaps />} */}
       {location.pathname !== "/" && <Footer />}
