@@ -1,78 +1,76 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "./Loader";
-import { FaMapMarkerAlt } from "react-icons/fa";
 
-interface Stay {
+interface Destination {
   id: number;
-  title: string;
-  location: string;
-  image1: string;
+  name: string;
+  description: string;
+  image: string;
 }
 
 const BACKEND_URL = "https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev";
 
-const Stay = () => {
-  const [stays, setStays] = useState<Stay[]>([]);
+const Home = () => {
+  const [destinations, setDestinations] = useState<Destination[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     axios
-      .get(`${BACKEND_URL}/api/stay/`)
+      .get(`${BACKEND_URL}/api/destinations/`)
       .then((response) => {
-        console.log("Fetched stays:", response.data);
-        setStays(response.data);
-        setLoading(false);
+        console.log("Fetched destinations:", response.data);
+        setDestinations(response.data);
+        setLoading(false); // Set loading to false after data is fetched
       })
-      .catch((err) => {
-        console.error("Error fetching data:", err);
-        setError("Failed to load stays");
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setError("Failed to load destinations");
         setLoading(false);
       });
   }, []);
 
-  // Show the loader while data is loading
-  if (loading) return <Loader />;
-  if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {error}</p>;
+// Show the loader while data is loading
+if (loading) return <Loader />;
+
+if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {error}</p>;
 
   return (
     <div className="bg-gray-900 text-white min-h-screen relative">
       <div className="absolute inset-0">
         <img
-          alt="Stay in Bukidnon"
+          alt="A scenic view of Bukidnon's lush green mountains"
           className="w-full h-full object-cover"
-          src={`${BACKEND_URL}/media/stays/stay-header.jpg`}
+          src={`${BACKEND_URL}/media/destinations/front-page.png`}
         />
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
-
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 min-h-screen">
-        <h1 className="text-6xl dancing-script text-white">S t a y</h1>
+        <nav className="absolute top-0 left-0 right-0 flex justify-between items-center p-4">
+          <img
+            alt="Logo"
+            className="h-20"
+            src="https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev/media/destinations/logo.png"
+          />
+          <ul className="flex space-x-10 text-lg">
+            <li><a className="hover:text-gray-300" href="#">Home</a></li>
+            <li><a className="hover:text-gray-300" href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/destinations">Destinations</a></li>
+            <li><a className="hover:text-gray-300" href="#">Blog</a></li>
+            <li><a className="hover:text-gray-300" href="#">FAQs</a></li>
+            <li><a className="hover:text-gray-300" href="#">About Us</a></li>
+          </ul>
+        </nav>
+        <h1 className="text-6xl dancing-script text-white">E x p l o r e</h1>
 
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-          {stays.map((stay) => (
-            <div key={stay.id} className="bg-white rounded-lg shadow-lg border border-gray-300 overflow-hidden">
-              {/* Image */}
-              <img
-                src={stay.image1.startsWith("/media") ? `${BACKEND_URL}${stay.image1}` : stay.image1}
-                alt={stay.title}
-                className="w-full h-60 object-cover"
-              />
-              {/* Content */}
-              <div className="p-4 text-black">
-                <h2 className="text-xl font-bold">{stay.title}</h2>
-                <div className="flex items-center text-gray-600 mt-2">
-                  <FaMapMarkerAlt className="text-red-500 mr-2" />
-                  <p className="italic">{stay.location}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <img
+          src={`${BACKEND_URL}/media/destinations/Bukidnon.png`}
+          alt="BUKIDNON"
+          className="w-auto h-80 md:h-70 object-contain"
+        />
       </div>
     </div>
-  );
+  );  
 };
 
-export default Stay;
+export default Home;

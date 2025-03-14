@@ -1,8 +1,8 @@
 from django.http import JsonResponse
 from django.views import View
 from rest_framework import viewsets  # ✅ Import viewsets for DRF
-from tourism.serializers import TouristSpotSerializer, ThrillingAdventureSerializer, CultureSerializer, DelicaciesSerializer, StaySerializer  # ✅ Correct
-from tourism.models import Destination, TouristSpot, ThrillingAdventure, Culture, Delicacies, Stay  # ✅ Correct
+from tourism.serializers import TouristSpotSerializer, ThrillingAdventureSerializer, CultureSerializer, DelicaciesSerializer, StaySerializer, DiningSerializer # ✅ Correct
+from tourism.models import Destination, TouristSpot, ThrillingAdventure, Culture, Delicacies, Stay, Dining  # ✅ Correct
 
 
 
@@ -37,3 +37,7 @@ class DelicaciesViewSet(viewsets.ModelViewSet):
 class StayViewSet(viewsets.ModelViewSet):
     queryset = Stay.objects.all()
     serializer_class = StaySerializer
+
+class DiningViewSet(viewsets.ModelViewSet):
+    queryset = Dining.objects.all()
+    serializer_class = DiningSerializer

@@ -47,4 +47,13 @@ class Stay(models.Model):
     location = models.TextField()
     image1 = models.ImageField(upload_to='stay/', null=True, blank=True)
     
+class Dining(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    location = models.TextField(max_length=300)
+    image1 = models.ImageField(upload_to='Dining/', null=True, blank=True)
+    image2 = models.ImageField(upload_to='Dining/', null=True, blank=True)
+    image3 = models.ImageField(upload_to='Dining/', null=True, blank=True)
+    image4 = models.ImageField(upload_to='Dining/', null=True, blank=True)
     
+ 
