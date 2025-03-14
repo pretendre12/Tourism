@@ -36,3 +36,15 @@ class Culture(models.Model):
     image2 = models.ImageField(upload_to='thrilling_adventures/', null=True, blank=True)
     highlights1 = models.TextField()
     highlights2 = models.TextField()
+
+class Delicacies(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    image1 = models.ImageField(upload_to='delicacies/', null=True, blank=True)
+
+class Stay(models.Model):
+    title = models.CharField(max_length=200)
+    location = models.TextField()
+    image1 = models.ImageField(upload_to='stay/', null=True, blank=True)
+    
+    
