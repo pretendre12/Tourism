@@ -11,6 +11,7 @@ import Festival from "./pages/Festival";
 import Delicacies from "./pages/Delicacies";
 import Stay from "./pages/Stay";
 import Dining from "./pages/Dining";
+import NotFound from "./pages/404";
 
 
 function App() {
@@ -48,6 +49,7 @@ function MainLayout() {
         <Route path="/delicacies" element={<Delicacies />} />
         <Route path="/stay" element={<Stay />} />
         <Route path="/dining" element={<Dining />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {/*{location.pathname == "/destinations" && <BukidnonMaps />} */}
       {location.pathname !== "/" && <Footer />}
