@@ -178,7 +178,7 @@ const Destinations = () => {
             <img src={`${BACKEND_URL}/media/destinations/tribe3.jpeg`} alt="Festival 3" className="w-40 h-30 object-cover" />
           </div>
           <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/culture">
-          <button className="absolute bottom-4 right-4 bg-gray-200 text-gray-700 px-6 py-2 rounded-full shadow-lg hover:bg-gray-300 transition">
+          <button className="absolute bottom-10 right-90 bg-gray-200 text-gray-700 px-6 py-2 rounded-full shadow-lg hover:bg-yellow-300 transition">
             Explore
           </button>
           </a>

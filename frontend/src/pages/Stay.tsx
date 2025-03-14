@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Loader from "./Loader";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
+import Loader from "./Loader"; // Import Loader component
+import Navbar from "../components/Navbar"
 
 interface Stay {
   id: number;
@@ -21,36 +23,50 @@ const Stay = () => {
     axios
       .get(`${BACKEND_URL}/api/stay/`)
       .then((response) => {
-        console.log("Fetched stays:", response.data);
         setStays(response.data);
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching data:", err);
-        setError("Failed to load stays");
+        setError(err.message);
         setLoading(false);
       });
   }, []);
 
-  // Show the loader while data is loading
   if (loading) return <Loader />;
   if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {error}</p>;
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen relative">
-      <div className="absolute inset-0">
+    <div>
+      {/* First Section */}
+      <div className="relative w-full overflow-hidden shadow-lg">
         <img
-          alt="Stay in Bukidnon"
-          className="w-full h-full object-cover"
-          src={`${BACKEND_URL}/media/stays/stay-header.jpg`}
+          src={`${BACKEND_URL}/media/stay/stay.png`}
+          alt="Traditional Artifacts & Crafts"
+          className="w-full h-[500px] object-cover"
         />
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+
+        {/* Text Overlay with Gradient Blur at Bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="absolute inset-0 flex flex-col justify-center px-5 text-center"
+        >
+          <h2 className="text-white text-4xl md:text-5xl ">
+            The Ultimate <span className="font-serif font-extrabold text-yellow-300">Stay</span> in <span className="font-serif font-extrabold">Bukidnon!</span>
+          </h2>
+        </motion.div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 min-h-screen">
-        <h1 className="text-6xl dancing-script text-white">S t a y</h1>
+      {/* Navbar at Bottom */}
+      <div>
+        <Navbar />
+      </div>
 
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+      {/* Stay Section */}
+      <div className="w-full min-h-[60vh] bg-white px-6 py-6">
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
           {stays.map((stay) => (
             <div key={stay.id} className="bg-white rounded-lg shadow-lg border border-gray-300 overflow-hidden">
               {/* Image */}
@@ -60,7 +76,7 @@ const Stay = () => {
                 className="w-full h-60 object-cover"
               />
               {/* Content */}
-              <div className="p-4 text-black">
+              <div className="p-4">
                 <h2 className="text-xl font-bold">{stay.title}</h2>
                 <div className="flex items-center text-gray-600 mt-2">
                   <FaMapMarkerAlt className="text-red-500 mr-2" />

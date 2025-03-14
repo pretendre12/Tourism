@@ -89,7 +89,7 @@ const Culture = () => {
             <div className="relative max-w-7xl mx-auto p-6">
                 <div ref={scrollRef} className="flex space-x-6 overflow-x-auto scrollbar-hide p-4">
                     {cultures.map((culture) => (
-                        <Card key={culture.id} className="shadow-lg rounded-lg overflow-hidden bg-gray-100 flex-none w-80">
+                        <Card key={culture.id} className="border-gray-500 shadow-lg rounded-lg overflow-hidden bg-gray-100 flex-none w-90">
                             <div className="bg-gray-700 text-white p-4">
                                 <h2 className="text-2xl font-bold">{culture.title}</h2>
                             </div>

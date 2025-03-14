@@ -10,8 +10,8 @@ const Navbar = () => {
     { name: "THRILLING ADVENTURES", path: "/thrilling-adventures" },
     { name: "CULTURE", path: "/culture" },
     { name: "DINING SPOTS", path: "/dining-spots" },
-    { name: "LOCAL DELICACIES", path: "/local-delicacies" },
-    { name: "PLACE TO STAY", path: "/place-to-stay" },
+    { name: "LOCAL DELICACIES", path: "/delicacies" },
+    { name: "PLACE TO STAY", path: "/stay" },
   ];
 
   return (
