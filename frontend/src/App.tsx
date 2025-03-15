@@ -12,6 +12,7 @@ import Delicacies from "./pages/Delicacies";
 import Stay from "./pages/Stay";
 import Dining from "./pages/Dining";
 import NotFound from "./pages/404";
+import Nature from "./pages/Nature";
 
 
 function App() {
@@ -37,6 +38,7 @@ function MainLayout() {
       location.pathname !== "/delicacies" &&
       location.pathname !== "/stay" &&
       location.pathname !== "/dining" &&
+      location.pathname !== "/nature" &&
       location.pathname !== "/destinations" && <Navbar />}
 
       <Routes>
@@ -51,6 +53,7 @@ function MainLayout() {
         <Route path="/stay" element={<Stay />} />
         <Route path="/dining" element={<Dining />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/nature" element={<Nature />} />
       </Routes>
       {/*{location.pathname == "/destinations" && <BukidnonMaps />} */}
       {location.pathname !== "/" && <Footer />}

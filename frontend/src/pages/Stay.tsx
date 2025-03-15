@@ -3,7 +3,7 @@ import axios from "axios";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Loader from "./Loader"; // Import Loader component
-import Navbar from "../components/Navbar"
+import Navbar from "../components/Navbar";
 
 interface Stay {
   id: number;
@@ -13,7 +13,6 @@ interface Stay {
 }
 
 const BACKEND_URL = "https://vigilant-halibut-gvj64vj9prw394p-8000.app.github.dev/";
-
 
 const Stay = () => {
   const [stays, setStays] = useState<Stay[]>([]);
@@ -40,18 +39,20 @@ const Stay = () => {
     <div>
       {/* First Section */}
       <div className="relative w-full overflow-hidden shadow-lg">
-        <img
+        <motion.img
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
           src={`${BACKEND_URL}/media/stay/stay.png`}
           alt="Traditional Artifacts & Crafts"
           className="w-full h-[500px] object-cover"
         />
 
         {/* Text Overlay with Gradient Blur at Bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
           className="absolute inset-0 flex flex-col justify-center px-5 text-center"
         >
           <h2 className="text-white text-4xl md:text-5xl ">
@@ -68,8 +69,15 @@ const Stay = () => {
       {/* Stay Section */}
       <div className="w-full min-h-[60vh] bg-white px-6 py-6">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-          {stays.map((stay) => (
-            <div key={stay.id} className="bg-white rounded-lg shadow-lg border border-gray-300 overflow-hidden">
+          {stays.map((stay, index) => (
+            <motion.div
+              key={stay.id}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+              className="bg-white rounded-lg shadow-lg border border-gray-300 overflow-hidden hover:scale-105 transition-transform duration-300"
+            >
               {/* Image */}
               <img
                 src={stay.image1.startsWith("/media") ? `${BACKEND_URL}${stay.image1}` : stay.image1}
@@ -84,7 +92,7 @@ const Stay = () => {
                   <p className="italic">{stay.location}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

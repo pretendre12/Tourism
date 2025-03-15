@@ -97,7 +97,7 @@ const Destinations = () => {
       {/* Adventure Options */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-16 pb-6">
         <div className="relative">
-        <a href={`${FRONT_URL}tourist-spots`}>
+        <a href={`${FRONT_URL}nature`}>
           <img
             src={`${BACKEND_URL}/media/destinations/mtmadulag.jpeg`}
             alt="Nature Escapes"
