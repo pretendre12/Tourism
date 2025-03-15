@@ -57,9 +57,9 @@ if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {
           <ul className="flex space-x-10 text-lg">
             <li><a className="hover:text-gray-300" href="#">Home</a></li>
             <li><a className="hover:text-gray-300" href={`${FRONT_URL}destinations`}>Destinations</a></li>
-            <li><a className="hover:text-gray-300" href="#">Blog</a></li>
-            <li><a className="hover:text-gray-300" href="#">FAQs</a></li>
-            <li><a className="hover:text-gray-300" href="#">About Us</a></li>
+            <li><a className="hover:text-gray-300" href={`${FRONT_URL}blog`}>Blog</a></li>
+            <li><a className="hover:text-gray-300" href={`${FRONT_URL}facts`}>FAQs</a></li>
+            <li><a className="hover:text-gray-300" href={`${FRONT_URL}about`}>About Us</a></li>
           </ul>
         </nav>
         <h1 className="text-6xl dancing-script text-white">E x p l o r e</h1>
