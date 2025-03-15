@@ -55,5 +55,13 @@ class Dining(models.Model):
     image2 = models.ImageField(upload_to='Dining/', null=True, blank=True)
     image3 = models.ImageField(upload_to='Dining/', null=True, blank=True)
     image4 = models.ImageField(upload_to='Dining/', null=True, blank=True)
+
+class Nature(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    image1 = models.ImageField(upload_to='Nature/', null=True, blank=True)
+    image2 = models.ImageField(upload_to='Nature/', null=True, blank=True)
+    image3 = models.ImageField(upload_to='Nature/', null=True, blank=True)
+    image4 = models.ImageField(upload_to='Nature/', null=True, blank=True)
     
  
