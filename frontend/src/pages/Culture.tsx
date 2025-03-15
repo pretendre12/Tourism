@@ -8,7 +8,8 @@ import Modal from "../components/ui/culture-modal";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
-const BACKEND_URL = "https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev";
+const BACKEND_URL = "https://vigilant-halibut-gvj64vj9prw394p-8000.app.github.dev/";
+const FRONT_URL = "https://vigilant-halibut-gvj64vj9prw394p-5173.app.github.dev/";
 
 interface Culture {
     id: number;
@@ -155,7 +156,7 @@ const Culture = () => {
                 <h2 className="tienne-black text-white text-4xl md:text-5xl font-extrabold mb-4 text-center">
                 Traditional <span className="font-bold text-yellow-300">Artifacts </span>  & <span className="font-bold text-red-300">Crafts</span>
                 </h2>
-                <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/articrafts">
+                <a href={`${FRONT_URL}articrafts`}>
                 <button className="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg hover:bg-yellow-400 transition">
                     Explore 
                 </button>
@@ -184,7 +185,7 @@ const Culture = () => {
                     <h2 className="text-white tienne-black text-4xl md:text-5xl font-extrabold mb-4 text-center">
                         F E S T I V A L S
                     </h2>
-                    <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/festival">
+                    <a href={`${FRONT_URL}festival`}>
                         <button className="mt-4 bg-white text-gray-900 px-5 py-0.5 rounded-full shadow-lg hover:bg-yellow-400 transition text-lg w-fit ml-175">
                             Explore
                         </button>

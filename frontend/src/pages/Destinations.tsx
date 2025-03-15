@@ -14,7 +14,8 @@ interface Destination {
   image: string;
 }
 
-const BACKEND_URL = "https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev";
+const BACKEND_URL = "https://vigilant-halibut-gvj64vj9prw394p-8000.app.github.dev/";
+const FRONT_URL = "https://vigilant-halibut-gvj64vj9prw394p-5173.app.github.dev/";
 
 const Destinations = () => {
   const [destinations, setDestinations] = useState<Destination[]>([]);
@@ -96,7 +97,7 @@ const Destinations = () => {
       {/* Adventure Options */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-16 pb-6">
         <div className="relative">
-        <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/tourist-spots">
+        <a href={`${FRONT_URL}tourist-spots`}>
           <img
             src={`${BACKEND_URL}/media/destinations/mtmadulag.jpeg`}
             alt="Nature Escapes"
@@ -109,7 +110,7 @@ const Destinations = () => {
         </div>
 
         <div className="relative">
-        <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/thrilling-adventures">
+        <a href={`${FRONT_URL}thrilling-adventures`}>
           <img
             src={`${BACKEND_URL}/media/destinations/challenges.png`}
             alt="Thrilling Adventures"
@@ -144,7 +145,7 @@ const Destinations = () => {
               <span>{dest.name}</span>
             </div>
 
-            <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/tourist-spots">
+            <a href={`${FRONT_URL}tourist-spots`}>
               <button className="absolute bottom-2 right-2 bg-gray-200 text-gray-700 px-4 py-2 rounded-full shadow-md hover:bg-gray-300 transition">
                 Discover
               </button>
@@ -177,7 +178,7 @@ const Destinations = () => {
             <img src={`${BACKEND_URL}/media/destinations/tribe2.jpeg`} alt="Festival 2" className="w-40 h-30 object-cover" />
             <img src={`${BACKEND_URL}/media/destinations/tribe3.jpeg`} alt="Festival 3" className="w-40 h-30 object-cover" />
           </div>
-          <a href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/culture">
+          <a href={`${FRONT_URL}culture`}>
           <button className="absolute bottom-10 right-90 bg-gray-200 text-gray-700 px-6 py-2 rounded-full shadow-lg hover:bg-yellow-300 transition">
             Explore
           </button>

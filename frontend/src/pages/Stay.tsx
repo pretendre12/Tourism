@@ -12,7 +12,8 @@ interface Stay {
   image1: string;
 }
 
-const BACKEND_URL = "https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev";
+const BACKEND_URL = "https://vigilant-halibut-gvj64vj9prw394p-8000.app.github.dev/";
+const FRONT_URL = "https://vigilant-halibut-gvj64vj9prw394p-5173.app.github.dev/";
 
 const Stay = () => {
   const [stays, setStays] = useState<Stay[]>([]);

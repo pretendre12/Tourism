@@ -9,7 +9,8 @@ interface Destination {
   image: string;
 }
 
-const BACKEND_URL = "https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev";
+const BACKEND_URL = "https://vigilant-halibut-gvj64vj9prw394p-8000.app.github.dev/";
+const FRONT_URL = "https://vigilant-halibut-gvj64vj9prw394p-5173.app.github.dev/";
 
 const Home = () => {
   const [destinations, setDestinations] = useState<Destination[]>([]);
@@ -51,11 +52,11 @@ if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {
           <img
             alt="Logo"
             className="h-20"
-            src="https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev/media/destinations/logo.png"
+            src={`${BACKEND_URL}/media/destinations/logo.png`}
           />
           <ul className="flex space-x-10 text-lg">
             <li><a className="hover:text-gray-300" href="#">Home</a></li>
-            <li><a className="hover:text-gray-300" href="https://probable-tribble-wrxrvp4jjwgjf9j57-5173.app.github.dev/destinations">Destinations</a></li>
+            <li><a className="hover:text-gray-300" href={`${FRONT_URL}destinations`}>Destinations</a></li>
             <li><a className="hover:text-gray-300" href="#">Blog</a></li>
             <li><a className="hover:text-gray-300" href="#">FAQs</a></li>
             <li><a className="hover:text-gray-300" href="#">About Us</a></li>

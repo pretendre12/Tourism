@@ -11,7 +11,8 @@ interface Delicacy {
   image1?: string; // Made optional to handle missing images
 }
 
-const BACKEND_URL = "https://probable-tribble-wrxrvp4jjwgjf9j57-8000.app.github.dev";
+const BACKEND_URL = "https://vigilant-halibut-gvj64vj9prw394p-8000.app.github.dev/";
+
 
 const Delicacies = () => {
   const [delicacies, setDelicacies] = useState<Delicacy[]>([]);
