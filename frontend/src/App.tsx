@@ -36,6 +36,7 @@ function MainLayout() {
       location.pathname !== "/festival" &&
       location.pathname !== "/delicacies" &&
       location.pathname !== "/stay" &&
+      location.pathname !== "/dining" &&
       location.pathname !== "/destinations" && <Navbar />}
 
       <Routes>

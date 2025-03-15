@@ -66,14 +66,9 @@ const dining : React.FC<ModalProps> = ({ title, images = [], children, onClose }
                 <div className="flex justify-between items-center border-t-4 border-black pt-2 mt-4">
                     <button 
                         onClick={onClose} 
-                        className="bg-gray-800 text-white px-8 py-2 rounded-lg shadow-md hover:bg-gray-700"
+                        className="bg-red-600 text-white px-8 py-2 rounded-lg shadow-md hover:bg-gray-700"
                     >
                         Exit
-                    </button>
-                    <button 
-                        className="bg-gray-200 text-black px-8 py-2 rounded-lg shadow-md hover:bg-gray-300"
-                    >
-                        Next
                     </button>
                 </div>
             </motion.div>

@@ -9,7 +9,7 @@ const Navbar = () => {
     { name: "NATURE ESCAPES", path: "/tourist-spots" },
     { name: "THRILLING ADVENTURES", path: "/thrilling-adventures" },
     { name: "CULTURE", path: "/culture" },
-    { name: "DINING SPOTS", path: "/dining-spots" },
+    { name: "DINING SPOTS", path: "/dining" },
     { name: "LOCAL DELICACIES", path: "/delicacies" },
     { name: "PLACE TO STAY", path: "/stay" },
   ];
