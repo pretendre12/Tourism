@@ -1,10 +1,12 @@
 import { FaFacebook, FaInstagram, FaTimesCircle } from "react-icons/fa";
 import { MdPhone, MdEmail } from "react-icons/md";
 
+const FRONT_URL = "https://vigilant-halibut-gvj64vj9prw394p-5173.app.github.dev/";
+
 const Footer = () => {
   return (
     <footer className="w-full bg-[#5B654F] text-white py-6 px-6 md:px-12">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-start gap-6">
+      <div className="container ml-20 mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
         
         {/* Left Section - Logo & Socials */}
         <div className="max-w-xs">
@@ -23,10 +25,11 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-md mb-2">Quick Links</h3>
           <ul className="text-sm space-y-1">
-            <li><a href="#" className="hover:underline">Adventures</a></li>
+            <li><a href={`${FRONT_URL}`} className="hover:underline">Home</a></li>
             <li><a href="#" className="hover:underline">Destinations</a></li>
-            <li><a href="#" className="hover:underline">Culture</a></li>
-            <li><a href="#" className="hover:underline">Delicacies</a></li>
+            <li><a href={`${FRONT_URL}nature`} className="hover:underline">Nature Escapes</a></li>
+            <li><a href={`${FRONT_URL}thrilling-adventures`} className="hover:underline">Thrilling Adventures</a></li>
+            <li><a href={`${FRONT_URL}dining`} className="hover:underline">Dining Spots</a></li>
           </ul>
         </div>
 

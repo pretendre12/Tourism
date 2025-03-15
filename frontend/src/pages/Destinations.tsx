@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
@@ -6,6 +7,7 @@ import { useInView } from "react-intersection-observer";
 import "../pages/Destinations.css";
 import BukidnonMap from "./BukidnonMap";
 import Loader from "./Loader"; 
+
 
 interface Destination {
   id: number;
@@ -141,8 +143,11 @@ const Destinations = () => {
               className="absolute top-2 left-2 bg-blue-100 text-blue-600 px-3 py-1 text-sm rounded-full flex items-center space-x-1 cursor-pointer"
               onClick={scrollToMap} // Added onClick event
             >
-              <span>📍</span>
-              <span>{dest.name}</span>
+              <div className="flex items-center">
+                  <FaMapMarkerAlt className="text-red-500 mr-2" />
+                  <span>{dest.name}</span>
+                </div>
+              
             </div>
 
             <a href={`${FRONT_URL}tourist-spots`}>

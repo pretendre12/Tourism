@@ -26,6 +26,11 @@
   font-style: normal;
 }
 
+.text-stroke {
+  -webkit-text-stroke: 1px black;  /* For WebKit browsers like Chrome and Safari */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);  /* Optional shadow for extra depth */
+}
+
 @keyframes slideIn {
   from {
     transform: translateX(100%);
