@@ -143,7 +143,6 @@ class NatureSerializer(serializers.ModelSerializer):
     image1 = serializers.SerializerMethodField()
     image2 = serializers.SerializerMethodField()
     image3 = serializers.SerializerMethodField()
-    image4 = serializers.SerializerMethodField()
 
     class Meta:
         model = Nature
@@ -159,8 +158,6 @@ class NatureSerializer(serializers.ModelSerializer):
     def get_image3(self, obj):
         return f"{settings.MEDIA_URL}{obj.image3}" if obj.image3 else None
 
-    def get_image4(self, obj):
-        return f"{settings.MEDIA_URL}{obj.image4}" if obj.image4 else None
         
     def get_full_image_url(self, image_path):
         request = self.context.get('request')
