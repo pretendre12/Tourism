@@ -6,21 +6,13 @@ interface ModalProps {
     images?: string[]; // Images are optional
     children: React.ReactNode;
     onClose: () => void;
-    onBack?: () => void;
-    onNext?: () => void;
-    hasNext?: boolean;
-    hasPrevious?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({ 
     title, 
     images = [], 
     children, 
-    onClose, 
-    onBack, 
-    onNext, 
-    hasNext = false, 
-    hasPrevious = false 
+    onClose 
 }) => {
     return (
         <div className="overflow-auto fixed inset-0 bg-opacity-70 flex bg-black/50 backdrop-blur-md items-center justify-center z-50">
