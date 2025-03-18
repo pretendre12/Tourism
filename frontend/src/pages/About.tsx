@@ -37,7 +37,7 @@ if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {
       {/* Hero Section */}
       <div className="relative w-full overflow-hidden shadow-lg">
         <img
-          src={`${BACKEND_URL}media/Dining/dining.png`}
+          src={`${BACKEND_URL}media/destinations/about.png`}
           alt="Delicious Dining Experience"
           className="w-full h-[500px] object-cover"
         />
@@ -49,8 +49,7 @@ if (error) return <p className="text-center text-xl text-red-500 mt-10">Error: {
           className="absolute inset-0 flex flex-col justify-center px-5 text-center"
         >
           <h2 className="text-white text-4xl md:text-5xl leading-snug">
-            <span className="font-serif font-extrabold">Bukidnon’s Ultimate </span>
-            <span className="font-serif font-extrabold text-yellow-300">Dining Haven</span>
+            <span className="font-serif font-extrabold mb-7">About Us</span>
           </h2>
         </motion.div>
       </div>

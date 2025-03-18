@@ -15,6 +15,9 @@ import NotFound from "./pages/404";
 import Nature from "./pages/Nature";
 import About from "./pages/About";
 import Facts from "./pages/Facts"
+import Ex from "./pages/Ex"
+import "./index.css";
+
 
 
 function App() {
@@ -59,6 +62,7 @@ function MainLayout() {
         <Route path="/nature" element={<Nature />} />
         <Route path="/about" element={<About />} />
         <Route path="/facts" element={<Facts />} />
+        <Route path="/ex" element={<Ex />} />
       </Routes>
       {/*{location.pathname == "/destinations" && <BukidnonMaps />} */}
       {location.pathname !== "/" && <Footer />}

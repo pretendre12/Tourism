@@ -14,15 +14,18 @@ const createIcon = (color: string) =>
     shadowSize: [41, 41],
   });
 
-// Locations with colors
-const locations = [
+// Explicitly define positions as `[number, number]` tuples
+const locations: { id: number; name: string; position: [number, number]; color: string }[] = [
   { id: 1, name: "Dahilayan Adventure Park", position: [8.2524, 124.8141], color: "red" },
   { id: 2, name: "Lake Apo", position: [8.0401, 125.0859], color: "blue" },
   { id: 3, name: "Monastery of Transfiguration", position: [7.9476, 125.0552], color: "green" },
   { id: 4, name: "Kaamulan Park", position: [8.1608, 125.1226], color: "orange" },
   { id: 5, name: "Bukidnon Pineapple Plantation", position: [8.1459, 124.9917], color: "yellow" },
-  { id: 6, name: "Communal Ranch", position: [8.2451, 125.0923], color: "violet" },
+  { id: 6, name: "Communal Ranch", position: [8.2451, 125.0923], color: "purple" }, // Changed "violet" to "purple"
 ];
+
+// Define map center as a tuple
+const mapCenter: [number, number] = [8.051, 125.135];
 
 const BukidnonMap: React.FC = () => {
   return (
@@ -40,11 +43,7 @@ const BukidnonMap: React.FC = () => {
 
       {/* Map Container */}
       <div className="w-full max-w-[900px] h-[400px] bg-gray-300 mt-6 shadow-lg rounded-lg overflow-hidden">
-        <MapContainer 
-          center={[8.051, 125.135]} 
-          zoom={10} 
-          style={{ height: "100%", width: "100%" }}
-        >
+        <MapContainer center={mapCenter} zoom={10} style={{ height: "100%", width: "100%" }}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
           {/* Multiple Colored Markers */}

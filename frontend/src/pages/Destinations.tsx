@@ -4,7 +4,6 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import "../pages/Destinations.css";
 import BukidnonMap from "./BukidnonMap";
 import Loader from "./Loader"; 
 
