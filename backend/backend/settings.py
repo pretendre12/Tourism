@@ -112,7 +112,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://vigilant-halibut-gvj64vj9prw394p-5173.app.github.dev",
     "http://127.0.0.1:8001",
     "http://127.0.0.1:8000",
-    "https://tourism-112.vercel.app",
+    "https://bukidnon-tourism.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # If using authentication (cookies or sessions)
@@ -121,7 +121,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://vigilant-halibut-gvj64vj9prw394p-5173.app.github.dev",
     "http://127.0.0.1:8000",
     "https://127.0.0.1:8000",
-    "https://tourism-112.vercel.app",
+    "https://bukidnon-tourism.vercel.app",
 ]
 
 CORS_ALLOW_HEADERS = [
