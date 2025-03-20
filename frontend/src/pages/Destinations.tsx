@@ -16,7 +16,7 @@ interface Destination {
 }
 
 const BACKEND_URL = "https://vigilant-halibut-gvj64vj9prw394p-8000.app.github.dev/";
-const FRONT_URL = "https://vigilant-halibut-gvj64vj9prw394p-5173.app.github.dev/";
+const FRONT_URL = "https://bukidnon-tourism.vercel.app/";
 
 const Destinations = () => {
   const [destinations, setDestinations] = useState<Destination[]>([]);
