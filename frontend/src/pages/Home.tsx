@@ -8,10 +8,7 @@ const Home = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500); // Simulating loading time
-
+    const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -29,13 +26,15 @@ const Home = () => {
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 min-h-screen">
-        <nav className="absolute top-0 left-0 right-0 flex justify-between items-center p-4">
+        
+        {/* Navbar */}
+        <nav className="absolute top-0 left-0 right-0 flex justify-between items-center p-3 sm:p-4">
           <img
             alt="Logo"
-            className="h-20"
+            className="h-14 sm:h-16"
             src={`${BACKEND_URL}/media/destinations/logo.png`}
           />
-          <ul className="flex space-x-10 text-lg">
+          <ul className="flex space-x-6 sm:space-x-10 text-sm sm:text-lg">
             <li><a className="hover:text-gray-300" href="#">Home</a></li>
             <li><a className="hover:text-gray-300" href={`${FRONT_URL}destinations`}>Destinations</a></li>
             <li><a className="hover:text-gray-300" href={`${FRONT_URL}blog`}>Blog</a></li>
@@ -44,12 +43,15 @@ const Home = () => {
           </ul>
         </nav>
 
-        <h1 className="text-6xl dancing-script text-white">E x p l o r e</h1>
+        {/* Hero Section */}
+        <h1 className="text-3xl sm:text-5xl dancing-script text-white mt-8">
+          E x p l o r e
+        </h1>
 
         <img
           src={`${BACKEND_URL}/media/destinations/Bukidnon.png`}
           alt="BUKIDNON"
-          className="w-auto h-80 md:h-70 object-contain"
+          className="w-auto h-40 sm:h-60 md:h-70 object-contain"
         />
       </div>
     </div>

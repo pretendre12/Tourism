@@ -21,7 +21,7 @@ const locations: { id: number; name: string; position: [number, number]; color: 
   { id: 3, name: "Monastery of Transfiguration", position: [7.9476, 125.0552], color: "green" },
   { id: 4, name: "Kaamulan Park", position: [8.1608, 125.1226], color: "orange" },
   { id: 5, name: "Bukidnon Pineapple Plantation", position: [8.1459, 124.9917], color: "yellow" },
-  { id: 6, name: "Communal Ranch", position: [8.2451, 125.0923], color: "purple" }, // Changed "violet" to "purple"
+  { id: 6, name: "Communal Ranch", position: [8.2451, 125.0923], color: "grey" }, 
 ];
 
 // Define map center as a tuple
