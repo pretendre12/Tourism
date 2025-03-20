@@ -113,6 +113,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8001",
     "http://127.0.0.1:8000",
     "https://bukidnon-tourism.vercel.app",
+    "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev",
 ]
 
 CORS_ALLOW_CREDENTIALS = True  # If using authentication (cookies or sessions)
@@ -122,6 +123,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000",
     "https://127.0.0.1:8000",
     "https://bukidnon-tourism.vercel.app",
+    "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev",
 ]
 
 CORS_ALLOW_HEADERS = [
