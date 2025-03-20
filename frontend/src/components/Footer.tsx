@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaTimesCircle } from "react-icons/fa";
 import { MdPhone, MdEmail } from "react-icons/md";
 
-const FRONT_URL = "https://vigilant-halibut-gvj64vj9prw394p-5173.app.github.dev/";
+const FRONT_URL = "https://bukidnon-tourism.vercel.app/";
 
 const Footer = () => {
   return (
