@@ -15,7 +15,7 @@ interface TouristSpot {
   travel_tips: string;
 }
 
-const BACKEND_URL = "https://vigilant-halibut-gvj64vj9prw394p-8000.app.github.dev/";
+const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
 
 
 const TouristSpots = () => {
