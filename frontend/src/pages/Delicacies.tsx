@@ -3,6 +3,10 @@ import axios from "axios";
 import Loader from "./Loader";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
+import { BACKEND_URL, FRONT_URL } from "../config/config";
+
+console.log(BACKEND_URL); 
+console.log(FRONT_URL);
 
 interface Delicacy {
   id: number;
@@ -11,7 +15,6 @@ interface Delicacy {
   image1?: string;
 }
 
-const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
 
 const Delicacies = () => {
   const [delicacies, setDelicacies] = useState<Delicacy[]>([]);

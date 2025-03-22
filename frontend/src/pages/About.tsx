@@ -4,8 +4,10 @@ import Navbar from "../components/Navbar"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "./Loader";
+import { BACKEND_URL, FRONT_URL } from "../config/config";
 
-const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
+console.log(BACKEND_URL); 
+console.log(FRONT_URL);
 
 const About: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);

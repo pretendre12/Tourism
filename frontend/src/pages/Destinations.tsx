@@ -5,7 +5,11 @@ import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import BukidnonMap from "./BukidnonMap";
-import Loader from "./Loader"; 
+import Loader from "./Loader";
+import { BACKEND_URL, FRONT_URL } from "../config/config";
+
+console.log(BACKEND_URL); 
+console.log(FRONT_URL);
 
 
 interface Destination {
@@ -15,8 +19,6 @@ interface Destination {
   image: string;
 }
 
-const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
-const FRONT_URL = "https://bukidnon-tourism.vercel.app/";
 
 const Destinations = () => {
   const [destinations, setDestinations] = useState<Destination[]>([]);

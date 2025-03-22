@@ -3,9 +3,11 @@ import Loader from "./Loader";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import { BACKEND_URL, FRONT_URL } from "../config/config";
 
+console.log(BACKEND_URL); 
+console.log(FRONT_URL);
 
-const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
 
 
 const Festival = () => {

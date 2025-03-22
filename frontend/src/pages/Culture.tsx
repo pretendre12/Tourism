@@ -7,9 +7,11 @@ import Navbar from "../components/Navbar";
 import Modal from "../components/ui/culture-modal";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { BACKEND_URL, FRONT_URL } from "../config/config";
 
-const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
-const FRONT_URL = "https://bukidnon-tourism.vercel.app/";
+console.log(BACKEND_URL); 
+console.log(FRONT_URL);
+
 
 interface Culture {
     id: number;

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Loader from "./Loader";
+import { BACKEND_URL, FRONT_URL } from "../config/config";
 
-const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
-const FRONT_URL = "https://bukidnon-tourism.vercel.app/";
+console.log(BACKEND_URL); 
+console.log(FRONT_URL);
 
 const Home = () => {
   const [loading, setLoading] = useState<boolean>(true);

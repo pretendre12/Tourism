@@ -1,4 +1,4 @@
-import clientInstance from 'client-instance'
+{/* import clientInstance from 'client-instance'
 
 interface IPayload {
     username: string
@@ -12,4 +12,4 @@ export const login = (payload: IPayload) => {
     } catch (error) {
         throw new Error(`Wrong Something: ${error}`)
     }
-}
+} */}

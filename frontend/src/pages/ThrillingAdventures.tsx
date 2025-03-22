@@ -7,8 +7,11 @@ import Loader from './Loader';
 import { motion } from 'framer-motion';
 import "../pages/Destinations.css";
 import Navbar from "../components/Navbar";
+import { BACKEND_URL, FRONT_URL } from "../config/config";
 
-const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
+console.log(BACKEND_URL); 
+console.log(FRONT_URL);
+
 
 interface Adventure {
     id: number;

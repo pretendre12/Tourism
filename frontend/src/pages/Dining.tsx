@@ -5,6 +5,10 @@ import Loader from "./Loader";
 import axios from "axios";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Navbar from "../components/Navbar"
+import { BACKEND_URL, FRONT_URL } from "../config/config";
+
+console.log(BACKEND_URL); 
+console.log(FRONT_URL);
 
 interface DiningProps {
   id: number;
@@ -16,8 +20,6 @@ interface DiningProps {
   image4?: string;
   location: string;
 }
-
-const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
 
 const Dining: React.FC = () => {
   const [dinings, setDinings] = useState<DiningProps[]>([]);

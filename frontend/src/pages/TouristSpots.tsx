@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "./Loader";
-import { motion } from "framer-motion"; // Added for animations
+import { motion } from "framer-motion";
+import { BACKEND_URL } from "../config/config";
+
+console.log(BACKEND_URL); 
+
 
 interface TouristSpot {
   id: number;
@@ -14,8 +18,6 @@ interface TouristSpot {
   cultural_significance: string;
   travel_tips: string;
 }
-
-const BACKEND_URL = "https://effective-train-4p56jp54x67h7v9p-8000.app.github.dev/";
 
 
 const TouristSpots = () => {
