@@ -12,6 +12,7 @@ const Navbar = () => {
     { name: "DINING SPOTS", path: "/dining" },
     { name: "LOCAL DELICACIES", path: "/delicacies" },
     { name: "PLACE TO STAY", path: "/stay" },
+    { name: "Login", path: "/Login" },
   ];
 
   return (

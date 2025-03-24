@@ -1,15 +1,16 @@
-{/* import clientInstance from 'client-instance'
+import clientInstance from '../middleware/client-instance';
 
-interface IPayload {
+
+export interface IPayload {
     username: string
     password: string
 }
 
-export const login = (payload: IPayload) => {
+export const login = async (payload: IPayload) => {
     try {
-        const res = clientInstance.post('/api/route', payload)
-        return res
+        const res = await clientInstance.post('/api/route', payload)
+        return res.data  // Return only the response data
     } catch (error) {
-        throw new Error(`Wrong Something: ${error}`)
+        throw new Error(`Something went wrong: ${error}`)
     }
-} */}
+}

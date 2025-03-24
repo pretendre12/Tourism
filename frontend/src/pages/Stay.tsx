@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
-import Loader from "./Loader"; // Import Loader component
+import Loader from "./Loader";
 import Navbar from "../components/Navbar";
+import client from "../service/middleware/client-instance";
 import { BACKEND_URL, FRONT_URL } from "../config/config";
 
-console.log(BACKEND_URL); 
+console.log(BACKEND_URL);
 console.log(FRONT_URL);
 
 interface Stay {
@@ -16,23 +16,24 @@ interface Stay {
   image1: string;
 }
 
-
 const Stay = () => {
   const [stays, setStays] = useState<Stay[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios
-      .get(`${BACKEND_URL}/api/stay/`)
-      .then((response) => {
+    const fetchStays = async () => {
+      try {
+        const response = await client.get("/api/stay/");
         setStays(response.data);
+      } catch (err) {
+        setError((err as Error).message);
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchStays();
   }, []);
 
   if (loading) return <Loader />;
@@ -59,15 +60,14 @@ const Stay = () => {
           className="absolute inset-0 flex flex-col justify-center px-5 text-center"
         >
           <h2 className="text-white text-4xl md:text-5xl ">
-            The Ultimate <span className="font-serif font-extrabold text-yellow-300">Stay</span> in <span className="font-serif font-extrabold">Bukidnon!</span>
+            The Ultimate <span className="font-serif font-extrabold text-yellow-300">Stay</span> in{" "}
+            <span className="font-serif font-extrabold">Bukidnon!</span>
           </h2>
         </motion.div>
       </div>
 
       {/* Navbar at Bottom */}
-      <div>
-        <Navbar />
-      </div>
+      <Navbar />
 
       {/* Stay Section */}
       <div className="w-full min-h-[60vh] bg-white px-6 py-6">

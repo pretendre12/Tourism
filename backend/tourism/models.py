@@ -1,4 +1,5 @@
 from django.db import models  
+from django.contrib.auth.models import AbstractUser, Group, Permission
 
 class Destination(models.Model):
     name = models.CharField(max_length=255)
@@ -65,4 +66,15 @@ class Nature(models.Model):
     image3 = models.ImageField(upload_to='Nature/', null=True, blank=True)
     
     
- 
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
+
+    # Force Django to use email instead of username for authentication
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []  # username is no longer required
+
+    groups = models.ManyToManyField(Group, related_name="customuser_set", blank=True)
+    user_permissions = models.ManyToManyField(Permission, related_name="customuser_set", blank=True)
+
+    def __str__(self):
+        return self.email  # Return email instead of username

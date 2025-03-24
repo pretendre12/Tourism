@@ -1,4 +1,5 @@
 from django.urls import path
+from .views import signup
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import destination_list, TouristSpotViewSet, ThrillingAdventureViewSet, CultureViewSet, DelicaciesViewSet, StayViewSet, DiningViewSet, NatureViewSet  # ✅ Import the correct function
@@ -15,4 +16,5 @@ router.register(r'nature', NatureViewSet, basename='Nature')
 urlpatterns = [
     path('', include(router.urls)),
     path('destinations/', destination_list, name='destination-list'),
+    path("signup/", signup, name="signup"),
 ]

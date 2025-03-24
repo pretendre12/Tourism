@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // Import React Query
+
 import Home from "./pages/Home";
 import Destinations from "./pages/Destinations";
 import TouristSpots from "./pages/TouristSpots";
@@ -6,7 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ThrillingAdventures from "./pages/ThrillingAdventures";
 import Culture from "./pages/Culture";
-import Articrafts from "./pages/Articracfts";
+import Articrafts from "./pages/Articrafts"; // Fixed typo
 import Festival from "./pages/Festival";
 import Delicacies from "./pages/Delicacies";
 import Stay from "./pages/Stay";
@@ -14,17 +16,22 @@ import Dining from "./pages/Dining";
 import NotFound from "./pages/404";
 import Nature from "./pages/Nature";
 import About from "./pages/About";
-import Facts from "./pages/Facts"
-import Ex from "./pages/Ex"
+import Facts from "./pages/Facts";
+import Ex from "./pages/Ex";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import "./index.css";
 
-
+// Create Query Client
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <Router>
-      <MainLayout />
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <MainLayout />
+      </Router>
+    </QueryClientProvider>
   );
 }
 
@@ -33,19 +40,11 @@ function MainLayout() {
 
   return (
     <>
-
-      {/* Show Navbar only if NOT on Home, becuase i dont want it in the top of my home page but in the middle*/}
-      {location.pathname !== "/" && 
-      location.pathname !== "/thrilling-adventures" &&
-      location.pathname !== "/culture" &&
-      location.pathname !== "/articrafts" &&
-      location.pathname !== "/festival" &&
-      location.pathname !== "/delicacies" &&
-      location.pathname !== "/stay" &&
-      location.pathname !== "/dining" &&
-      location.pathname !== "/nature" &&
-      location.pathname !== "/about" &&
-      location.pathname !== "/destinations" && <Navbar />}
+      {/* Hide Navbar on these pages */}
+      {![
+        "/", "/thrilling-adventures", "/culture", "/articrafts", "/festival",
+        "/delicacies", "/stay", "/dining", "/nature", "/about", "/destinations"
+      ].includes(location.pathname) && <Navbar />}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -63,8 +62,10 @@ function MainLayout() {
         <Route path="/about" element={<About />} />
         <Route path="/facts" element={<Facts />} />
         <Route path="/ex" element={<Ex />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
-      {/*{location.pathname == "/destinations" && <BukidnonMaps />} */}
+
       {location.pathname !== "/" && <Footer />}
     </>
   );

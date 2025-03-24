@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
     
     # Third-party apps
     'rest_framework',
@@ -42,6 +43,15 @@ INSTALLED_APPS = [
     'tourism',
 
 ]
+
+APPEND_SLASH = False
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",  # CORS Middleware MUST be first
@@ -89,6 +99,8 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = "tourism.CustomUser"
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
@@ -106,14 +118,11 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# CORS SETTINGS
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8001",
-    "http://127.0.0.1:8000",
-    "https://bukidnon-tourism.vercel.app",
-    "https://fictional-fortnight-p549j54v55gh759p-8000.app.github.dev",
-    "https://fictional-fortnight-p549j54v55gh759p-5173.app.github.dev",
-]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+
 
 CORS_ALLOW_CREDENTIALS = True  # If using authentication (cookies or sessions)
 
@@ -123,6 +132,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://bukidnon-tourism.vercel.app",
     "https://fictional-fortnight-p549j54v55gh759p-8000.app.github.dev",
     "https://fictional-fortnight-p549j54v55gh759p-5173.app.github.dev",
+    "http://fictional-fortnight-p549j54v55gh759p-5173.app.github.dev",
 ]
 
 CORS_ALLOW_HEADERS = [

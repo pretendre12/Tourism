@@ -13,7 +13,13 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) return <Loader />;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-900">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-900 text-white min-h-screen relative">
