@@ -1,8 +1,8 @@
-import axios from "axios";
+// api.ts
+import axios from 'axios';
 
-const API = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL || "http://127.0.0.1:8000/api",
-    headers: { "Content-Type": "application/json" }
+const api = axios.create({
+  baseURL: 'https://fuzzy-happiness-69wvq6vv665p2rx65-8000.app.github.dev/api', // Update with your backend URL
 });
 
-export default API;
+export default api;
