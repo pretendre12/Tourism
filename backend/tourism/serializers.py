@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from .models import Destination, TouristSpot, ThrillingAdventure, Culture, Delicacies, Stay, Dining, Nature
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -170,26 +171,36 @@ class NatureSerializer(serializers.ModelSerializer):
 User = get_user_model()
 
 class SignupSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
-
+    password = serializers.CharField(
+        write_only=True,
+        min_length=8,
+        style={'input_type': 'password'}
+    )
+    
     class Meta:
         model = User
-        fields = ["username", "email", "password"]
+        fields = ['email', 'password']  # Removed username
+        extra_kwargs = {
+            'email': {'required': True},
+        }
+
+    def validate_email(self, value):
+        if User.objects.filter(email=value).exists():
+            raise ValidationError("Email already exists")
+        return value
 
     def create(self, validated_data):
-        user = User.objects.create_user(
-            username=validated_data["username"],
-            email=validated_data["email"],
-            password=validated_data["password"]
+        return User.objects.create_user(
+            email=validated_data['email'],
+            password=validated_data['password']
         )
-        return user
-
+        
 class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField()
+    email = serializers.EmailField()  # Changed from username to email
     password = serializers.CharField(write_only=True)
 
     def validate(self, data):
-        user = authenticate(username=data["username"], password=data["password"])
+        user = authenticate(email=data["email"], password=data["password"])
         if not user:
             raise serializers.ValidationError("Invalid credentials")
         return {"user": user}

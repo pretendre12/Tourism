@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+from corsheaders.defaults import default_headers
+
 
 # Define BASE_DIR at the beginning
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     
     # Third-party apps
     'rest_framework',
@@ -48,11 +51,10 @@ APPEND_SLASH = False
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
-
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",  # CORS Middleware MUST be first
     "django.middleware.security.SecurityMiddleware",
@@ -100,6 +102,10 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = "tourism.CustomUser"
+AUTHENTICATION_BACKENDS = [
+    'tourism.backends.EmailAuthBackend',  # Your custom backend
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -119,21 +125,26 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 
 
 CORS_ALLOW_CREDENTIALS = True  # If using authentication (cookies or sessions)
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1:8000",
-    "https://127.0.0.1:8000",
-    "https://bukidnon-tourism.vercel.app",
-    "https://fictional-fortnight-p549j54v55gh759p-8000.app.github.dev",
-    "https://fictional-fortnight-p549j54v55gh759p-5173.app.github.dev",
-    "http://fictional-fortnight-p549j54v55gh759p-5173.app.github.dev",
+CORS_ALLOWED_ORIGINS = [
+    "https://fuzzy-happiness-69wvq6vv665p2rx65-5173.app.github.dev",
+    "https://fuzzy-happiness-69wvq6vv665p2rx65-8000.app.github.dev",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
 ]
+
+if os.getenv("GITHUB_CODESPACES"):
+    CORS_ALLOWED_ORIGINS.extend([
+        f"https://{os.getenv('CODESPACE_NAME')}-5173.app.github.dev",
+        f"https://{os.getenv('CODESPACE_NAME')}-8000.app.github.dev",
+    ])
+    CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS.copy()
 
 CORS_ALLOW_HEADERS = [
     'content-type',
@@ -142,6 +153,23 @@ CORS_ALLOW_HEADERS = [
     'Access-Control-Allow-Origin',
     "content-disposition",
     "accept",
+    "content-disposition",
+]
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+}
+
+CORS_EXPOSE_HEADERS = [
+    "content-disposition",
 ]
 
 ALLOWED_HOSTS = ["*"]
+
+
+# Security settings for production (optional but recommended)
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
