@@ -37,10 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
-<<<<<<< HEAD
     'rest_framework_simplejwt',
-=======
->>>>>>> 1b419335 (Pending changes exported from your codespace)
     
     # Third-party apps
     'rest_framework',
@@ -54,18 +51,10 @@ APPEND_SLASH = False
 
 
 REST_FRAMEWORK = {
-<<<<<<< HEAD
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
-=======
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ],
-}
-
->>>>>>> 1b419335 (Pending changes exported from your codespace)
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",  # CORS Middleware MUST be first
     "django.middleware.security.SecurityMiddleware",
@@ -113,13 +102,10 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = "tourism.CustomUser"
-<<<<<<< HEAD
 AUTHENTICATION_BACKENDS = [
     'tourism.backends.EmailAuthBackend',  # Your custom backend
     'django.contrib.auth.backends.ModelBackend',  # Default backend
 ]
-=======
->>>>>>> 1b419335 (Pending changes exported from your codespace)
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -139,32 +125,18 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-<<<<<<< HEAD
 CORS_ALLOW_ALL_ORIGINS = False
-=======
-CORS_ALLOW_ALL_ORIGINS = True
->>>>>>> 1b419335 (Pending changes exported from your codespace)
 
 CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 
 
 CORS_ALLOW_CREDENTIALS = True  # If using authentication (cookies or sessions)
 
-<<<<<<< HEAD
 CORS_ALLOWED_ORIGINS = [
-    "https://bookish-adventure-gvj64vj9jjgfv67g-5173.app.github.dev",
-    "https://bookish-adventure-gvj64vj9jjgfv67g-8000.app.github.dev",
+    "https://fuzzy-happiness-69wvq6vv665p2rx65-5173.app.github.dev",
+    "https://fuzzy-happiness-69wvq6vv665p2rx65-8000.app.github.dev",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-=======
-CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1:8000",
-    "https://127.0.0.1:8000",
-    "https://bukidnon-tourism.vercel.app",
-    "https://fictional-fortnight-p549j54v55gh759p-8000.app.github.dev",
-    "https://fictional-fortnight-p549j54v55gh759p-5173.app.github.dev",
-    "http://fictional-fortnight-p549j54v55gh759p-5173.app.github.dev",
->>>>>>> 1b419335 (Pending changes exported from your codespace)
 ]
 
 if os.getenv("GITHUB_CODESPACES"):

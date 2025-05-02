@@ -1,9 +1,5 @@
 from django.db import models  
-<<<<<<< HEAD
 from django.contrib.auth.models import AbstractUser, Group, Permission, BaseUserManager
-=======
-from django.contrib.auth.models import AbstractUser, Group, Permission
->>>>>>> 1b419335 (Pending changes exported from your codespace)
 
 class Destination(models.Model):
     name = models.CharField(max_length=255)
@@ -70,7 +66,6 @@ class Nature(models.Model):
     image3 = models.ImageField(upload_to='Nature/', null=True, blank=True)
     
     
-<<<<<<< HEAD
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -97,16 +92,3 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
-=======
-class CustomUser(AbstractUser):
-    username = None  # Remove username
-    email = models.EmailField(unique=True)
-    
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
-    
-    objects = CustomUserManager()
-
-    def __str__(self):
-        return self.email  # Return email instead of username
->>>>>>> 1b419335 (Pending changes exported from your codespace)

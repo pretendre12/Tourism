@@ -171,7 +171,6 @@ class NatureSerializer(serializers.ModelSerializer):
 User = get_user_model()
 
 class SignupSerializer(serializers.ModelSerializer):
-<<<<<<< HEAD
     password = serializers.CharField(
         write_only=True,
         min_length=8,
@@ -202,34 +201,6 @@ class LoginSerializer(serializers.Serializer):
 
     def validate(self, data):
         user = authenticate(email=data["email"], password=data["password"])
-=======
-    password = serializers.CharField(write_only=True)
-
-    class Meta:
-        model = User
-        fields = ['email', 'password']  # Removed username
-        extra_kwargs = {
-            'email': {'required': True},
-        }
-
-    def validate_email(self, value):
-        if User.objects.filter(email=value).exists():
-            raise ValidationError("Email already exists")
-        return value
-
-    def create(self, validated_data):
-        return User.objects.create_user(
-            email=validated_data['email'],
-            password=validated_data['password']
-        )
-        
-class LoginSerializer(serializers.Serializer):
-    email = serializers.EmailField()  # Changed from username to email
-    password = serializers.CharField(write_only=True)
-
-    def validate(self, data):
-        user = authenticate(username=data["username"], password=data["password"])
->>>>>>> 1b419335 (Pending changes exported from your codespace)
         if not user:
             raise serializers.ValidationError("Invalid credentials")
         return {"user": user}

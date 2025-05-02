@@ -12,11 +12,8 @@ from tourism.models import CustomUser as User
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.authtoken.models import Token
-<<<<<<< HEAD
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.db import IntegrityError
-=======
->>>>>>> 1b419335 (Pending changes exported from your codespace)
 
 
 # ✅ Class-based view for fetching Destination list
@@ -59,7 +56,6 @@ class NatureViewSet(viewsets.ModelViewSet):
     queryset = Nature.objects.all()
     serializer_class = NatureSerializer
 
-<<<<<<< HEAD
 User = get_user_model()  # Ensures Django uses your custom user model
 
 @api_view(['POST'])
@@ -106,60 +102,3 @@ def login_view(request):
 
     except Exception as e:
         return Response({"detail": "Internal server error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-=======
-
-@api_view(["POST"])
-def signup(request):
-    serializer = SignupSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "User created successfully!"}, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-User = get_user_model()  # Ensures Django uses your custom user model
-
-@api_view(['POST'])
-def signup(request):
-    try:
-        serializer = SignupSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        return Response(
-            {"message": "User created successfully"},
-            status=status.HTTP_201_CREATED
-        )
-    except IntegrityError:
-        return Response(
-            {"error": "Email or username already exists"},
-            status=status.HTTP_400_BAD_REQUEST
-        )
-    except Exception as e:
-        return Response(
-            {"error": "Internal server error"},
-            status=status.HTTP_500_INTERNAL_SERVER_ERROR
-        )
-        
-@api_view(['POST'])
-def login_view(request):
-    try:
-        email = request.data.get('email')
-        password = request.data.get('password')
-
-        user = authenticate(request, email=email, password=password)
-        if not user:
-            return Response({"detail": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
-
-        refresh = RefreshToken.for_user(user)
-        return Response({
-            "access": str(refresh.access_token),
-            "refresh": str(refresh),
-            "user": {
-                "id": user.id,
-                "email": user.email,
-                "username": user.username
-            }
-        }, status=status.HTTP_200_OK)
-
-    return Response({"detail": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
->>>>>>> 1b419335 (Pending changes exported from your codespace)

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-from django.urls import path
-from .views import signup
->>>>>>> 1b419335 (Pending changes exported from your codespace)
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
@@ -30,11 +25,6 @@ router.register(r'nature', NatureViewSet, basename='nature')  # ✅ Fixed basena
 urlpatterns = [
     path('', include(router.urls)),
     path('destinations/', destination_list, name='destination-list'),
-<<<<<<< HEAD
     path('signup/', signup, name='signup'),
     path('login/', login_view, name='login'),  # ✅ Use direct imported function
 ]
-=======
-    path("signup/", signup, name="signup"),
-]
->>>>>>> 1b419335 (Pending changes exported from your codespace)
