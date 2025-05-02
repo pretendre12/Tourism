@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // App.tsx
 import React, { ReactNode } from "react";
 import {
@@ -10,13 +11,21 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { AuthProvider, useAuth } from "./context/AuthContext";
+=======
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // Import React Query
+>>>>>>> 1b419335 (Pending changes exported from your codespace)
 
 import Home from "./pages/Home";
 import Destinations from "./pages/Destinations";
 import TouristSpots from "./pages/TouristSpots";
 import ThrillingAdventures from "./pages/ThrillingAdventures";
 import Culture from "./pages/Culture";
-import Articrafts from "./pages/Articrafts";
+<<<<<<< HEAD
+import Articrafts from "./pages/Articracfts"
+=======
+import Articrafts from "./pages/Articrafts"; // Fixed typo
+>>>>>>> 1b419335 (Pending changes exported from your codespace)
 import Festival from "./pages/Festival";
 import Delicacies from "./pages/Delicacies";
 import Stay from "./pages/Stay";
@@ -25,6 +34,7 @@ import Nature from "./pages/Nature";
 import About from "./pages/About";
 import Facts from "./pages/Facts";
 import Ex from "./pages/Ex";
+<<<<<<< HEAD
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -48,6 +58,24 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { user } = useAuth();
   return user ? <>{children}</> : <Navigate to="/login" />;
 };
+=======
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import "./index.css";
+
+// Create Query Client
+const queryClient = new QueryClient();
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <MainLayout />
+      </Router>
+    </QueryClientProvider>
+  );
+}
+>>>>>>> 1b419335 (Pending changes exported from your codespace)
 
 // 🧠 MainLayout wraps routes + layout elements
 const MainLayout: React.FC = () => {
@@ -57,7 +85,15 @@ const MainLayout: React.FC = () => {
 
   return (
     <>
+<<<<<<< HEAD
       {showLayout && <Navbar />}
+=======
+      {/* Hide Navbar on these pages */}
+      {![
+        "/", "/thrilling-adventures", "/culture", "/articrafts", "/festival",
+        "/delicacies", "/stay", "/dining", "/nature", "/about", "/destinations"
+      ].includes(location.pathname) && <Navbar />}
+>>>>>>> 1b419335 (Pending changes exported from your codespace)
 
       <Routes>
         {/* Public routes */}
@@ -89,6 +125,7 @@ const MainLayout: React.FC = () => {
         <Route path="/about" element={<About />} />
         <Route path="/facts" element={<Facts />} />
         <Route path="/ex" element={<Ex />} />
+<<<<<<< HEAD
         <Route path="/homepage" element={<HomePage />} />
 
         {/* 404 */}
@@ -96,6 +133,13 @@ const MainLayout: React.FC = () => {
       </Routes>
 
       {showLayout && <Footer />}
+=======
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+
+      {location.pathname !== "/" && <Footer />}
+>>>>>>> 1b419335 (Pending changes exported from your codespace)
     </>
   );
 };

@@ -13,7 +13,7 @@ export default function HomePage() {
         <p>Username: {user?.username}</p>
         <p>ID: {user?.id}</p>
       </div>
-      <button onClick={logout}>Logou</button>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }

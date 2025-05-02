@@ -11,14 +11,20 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",
+<<<<<<< HEAD
     "@tanstack/react-query": "^5.74.3",
     "axios": "^1.8.4",
     "formik": "^2.4.6",
+    "framer-motion": "^12.7.3",
+=======
+    "@tanstack/react-query": "^5.69.0",
+    "axios": "^1.8.2",
     "framer-motion": "^12.4.11",
+>>>>>>> 1b419335 (Pending changes exported from your codespace)
     "leaflet": "^1.9.4",
     "lucide-react": "^0.479.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
     "react-leaflet": "^5.0.0",
@@ -31,7 +37,8 @@
     "@eslint/js": "^9.21.0",
     "@types/leaflet": "^1.9.16",
     "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.0.4",
+    "@types/react-dom": "^19.1.2",
+    "@types/yup": "^0.29.14",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
