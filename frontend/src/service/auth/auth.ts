@@ -1,3 +1,4 @@
+{/*service/auth/auth.ts*/}
 import clientInstance from "../middleware/client-instance";
 
 export interface IPayload {
