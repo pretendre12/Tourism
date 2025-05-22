@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { BACKEND_URL } from '../config/config';
 
 interface FavoriteItem {
   id: number;
@@ -8,45 +10,33 @@ interface FavoriteItem {
   image?: string;
 }
 
-
-
-// Mock data for demonstration
-const mockFavorites: FavoriteItem[] = [
-  {
-    id: 1,
-    content_type_str: 'nature',
-    content_object_title: 'Mt. Capistrano',
-    object_id: 1,
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop'
-  },
-  {
-    id: 2,
-    content_type_str: 'nature',
-    content_object_title: 'Musuan Peak',
-    object_id: 2,
-    image: 'https://images.unsplash.com/photo-1464822759844-d150ad6d1ba9?w=400&h=300&fit=crop'
-  },
-  {
-    id: 3,
-    content_type_str: 'culture',
-    content_object_title: 'Ancient Temple',
-    object_id: 3,
-    image: 'https://images.unsplash.com/photo-1539650116574-75c0c6d30ba9?w=400&h=300&fit=crop'
-  }
-];
+interface NatureProps {
+  id: number;
+  title: string;
+  description: string;
+  image1: string;
+  image2?: string;
+  image3?: string;
+  highlights: string;
+  is_favorite?: boolean;
+}
 
 export default function ProfilePage() {
-  // Mock user data
-  const user = { email: 'test10@gmail.com', username: 'TestUser' };
-  const [favorites] = useState<FavoriteItem[]>(mockFavorites);
-  const [loading] = useState(false);
-  const [error] = useState('');
+  const { user, logout, token } = useAuth();
+  const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [avatarColor, setAvatarColor] = useState('');
   
   const email = user?.email || '';
   const username = user?.username || '';
   const avatarInitial = email.charAt(0).toUpperCase();
   const isAdmin = email.toLowerCase() === 'admin';
+
+  const endpointMap: Record<string, string> = {
+    nature: 'nature',
+    culture: 'culture',
+  };
 
   // Generate random avatar color on component mount
   useEffect(() => {
@@ -55,9 +45,57 @@ export default function ProfilePage() {
     setAvatarColor(randomColor);
   }, []);
 
+  useEffect(() => {
+    async function fetchFavoritesWithImages() {
+      setLoading(true);
+      setError('');
+      try {
+        const res = await fetch(`${BACKEND_URL}api/user/favorites/`, {
+          headers: {
+            Authorization: `JWT ${token}`,
+          },
+        });
+        if (!res.ok) throw new Error('Failed to fetch favorites.');
+        const data = await res.json();
+
+        const detailedFavorites = await Promise.all(
+          data.map(async (fav: FavoriteItem) => {
+            const endpoint = endpointMap[fav.content_type_str];
+            if (!endpoint) return fav;
+
+            try {
+              const detailRes = await fetch(
+                `${BACKEND_URL}api/${endpoint}/${fav.object_id}/`,
+                {
+                  headers: { Authorization: `JWT ${token}` },
+                }
+              );
+              const detailData: NatureProps = await detailRes.json();
+              return {
+                ...fav,
+                image: detailData.image1 ? `${BACKEND_URL}${detailData.image1}` : null,
+              };
+            } catch {
+              return fav;
+            }
+          })
+        );
+
+        setFavorites(detailedFavorites);
+      } catch (err: any) {
+        setError(err.message || 'Error loading favorites.');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (token) {
+      fetchFavoritesWithImages();
+    }
+  }, [token]);
+
   const handleLogout = () => {
-    console.log('Logging out...');
-    // Add logout logic here
+    logout();
   };
 
   return (
@@ -97,7 +135,7 @@ export default function ProfilePage() {
             </nav>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 text-red-600 hover:text-gray-800 font-medium transition duration-200 flex items-center gap-2"
+              className="px-4 py-2 text-gray-600 hover:text-gray-800 font-medium transition duration-200 flex items-center gap-2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -138,17 +176,16 @@ export default function ProfilePage() {
               </svg>
               <p className="text-gray-600 text-lg font-medium">You haven't saved any favorites yet.</p>
               <p className="text-gray-500 mt-2 mb-4">Browse our collection and add your favorites!</p>
-              <a href='/nature'>
               <button className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition">
                 Explore now
               </button>
-              </a>
             </div>
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {favorites.map((fav, i) => (
-                <div
+                <a
                   key={i}
+                  href={`/nature`}
                   className="group block overflow-hidden rounded-lg shadow-sm hover:shadow-md transition duration-300 bg-white border border-gray-200 cursor-pointer"
                 >
                   <div className="relative">
@@ -189,7 +226,7 @@ export default function ProfilePage() {
                       </span>
                     </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           )}
