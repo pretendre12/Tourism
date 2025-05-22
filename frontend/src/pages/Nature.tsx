@@ -141,7 +141,7 @@ const Nature: React.FC = () => {
                 </button>
                 <button 
                   onClick={() => toggleFavorite(spot.id)}
-                  className={`self-start ${spot.is_favorite ? 'bg-red-500' : 'bg-green-600'} text-white px-3 py-1 rounded text-sm hover:opacity-80`}
+                  className="self-start text-2xl hover:opacity-80 transition"
                 >
                   {spot.is_favorite ? '❤️' : '🤍'}
                 </button>
