@@ -106,12 +106,12 @@ export default function ProfilePage() {
               Hello, {username || 'User'}!
             </h1>
             <p className="text-gray-500 text-sm">{email}</p>
-            <p className="text-gray-400 text-xs">Member since: {joined}</p>
-          </div>
+            {/* <p className="text-gray-400 text-xs">Member since: {joined}</p>
+          </div> */}
         </div>
 
         {/* User Info */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div>
             <label className="text-sm font-semibold text-gray-600">Email</label>
             <p className="text-gray-800">{email}</p>
@@ -124,7 +124,7 @@ export default function ProfilePage() {
             <label className="text-sm font-semibold text-gray-600">Joined</label>
             <p className="text-gray-800">{joined}</p>
           </div>
-        </div>
+        </div> */}
 
         {/* Favorites */}
         <div>
