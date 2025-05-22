@@ -30,7 +30,7 @@ const ThrillingAdventures = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/thrilling-adventures`)
+        axios.get(`${BACKEND_URL}api/thrilling-adventures/`)
             .then((response) => {
                 setAdventures(response.data);
                 setLoading(false);

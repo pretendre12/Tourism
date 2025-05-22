@@ -43,10 +43,10 @@ const Home = () => {
           />
           <ul className="flex space-x-6 sm:space-x-10 text-sm sm:text-lg">
             <li><a className="hover:text-gray-300" href="#">Home</a></li>
-            <li><a className="hover:text-gray-300" href={`${FRONT_URL}destinations`}>Destinations</a></li>
-            <li><a className="hover:text-gray-300" href={`${FRONT_URL}blog`}>Blog</a></li>
-            <li><a className="hover:text-gray-300" href={`${FRONT_URL}facts`}>FAQs</a></li>
-            <li><a className="hover:text-gray-300" href={`${FRONT_URL}about`}>About Us</a></li>
+            <li><a className="hover:text-gray-300" href={`${FRONT_URL}/destinations`}>Destinations</a></li>
+            <li><a className="hover:text-gray-300" href={`${FRONT_URL}/blog`}>Blog</a></li>
+            <li><a className="hover:text-gray-300" href={`${FRONT_URL}/facts`}>FAQs</a></li>
+            <li><a className="hover:text-gray-300" href={`${FRONT_URL}/about`}>About Us</a></li>
           </ul>
         </nav>
 

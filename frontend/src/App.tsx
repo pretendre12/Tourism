@@ -53,7 +53,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 const MainLayout: React.FC = () => {
   const location = useLocation();
   const { user } = useAuth();
-  const showLayout = location.pathname !== "/";
+  const blacklist = ["/", "/nature", "/destinations", "/thrilling-adventure", "/culture", "/delicacies", "/dining", "/stay", "/about"];
+  const showLayout = !blacklist.includes(location.pathname);
 
   return (
     <>

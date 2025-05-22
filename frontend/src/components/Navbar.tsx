@@ -1,8 +1,13 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const location = useLocation();
+  const { user, logout, token } = useAuth();
+  const email = user?.email || '';
+  const avatarInitial = email.charAt(0).toUpperCase();
 
+  // Filter out the "Login" item if user exists
   const navItems = [
     { name: "HOMEPAGE", path: "/" },
     { name: "DESTINATIONS", path: "/destinations" },
@@ -12,7 +17,6 @@ const Navbar = () => {
     { name: "DINING SPOTS", path: "/dining" },
     { name: "LOCAL DELICACIES", path: "/delicacies" },
     { name: "PLACE TO STAY", path: "/stay" },
-    { name: "Login", path: "/Login" },
   ];
 
   return (
@@ -34,6 +38,30 @@ const Navbar = () => {
           </a>
         );
       })}
+
+      {/* Show username if user exists, else show Login */}
+      {user ? (
+        <Link to="/profile">
+        <div
+            className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-base font-bold shadow-md ${
+               'bg-blue-500'
+            }`}
+          >
+            {avatarInitial}
+          </div>
+          </Link>
+      ) : (
+        <a
+          href="/Login"
+          className={`text-gray-700 px-3 py-2 transition-all duration-300 ${
+            location.pathname === "/Login"
+              ? "bg-gray-300 rounded-full"
+              : "hover:bg-gray-300 hover:rounded-full"
+          }`}
+        >
+          Login
+        </a>
+      )}
     </nav>
   );
 };

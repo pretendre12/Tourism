@@ -1,10 +1,29 @@
-// pages/ProfilePage.tsx
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { BACKEND_URL } from '../config/config';
+
+interface FavoriteItem {
+  id: number;
+  content_type_str: string;
+  content_object_title: string;
+  object_id: number;
+  image?: string;
+}
+
+interface NatureProps {
+  id: number;
+  title: string;
+  description: string;
+  image1: string;
+  image2?: string;
+  image3?: string;
+  highlights: string;
+  is_favorite?: boolean;
+}
 
 export default function ProfilePage() {
-  const { user, logout, token } = useAuth(); // token needed for auth API calls
-  const [favorites, setFavorites] = useState<any[]>([]);
+  const { user, logout, token } = useAuth();
+  const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -16,20 +35,48 @@ export default function ProfilePage() {
   const avatarInitial = email.charAt(0).toUpperCase();
   const isAdmin = email.toLowerCase() === 'admin';
 
+  const endpointMap: Record<string, string> = {
+    nature: 'nature',
+    culture: 'culture',
+  };
+
   useEffect(() => {
-    async function fetchFavorites() {
+    async function fetchFavoritesWithImages() {
       setLoading(true);
       setError('');
       try {
-        const res = await fetch('https://glowing-waffle-45qvgwwj5r6cjggq-8000.app.github.dev/api/user/favorites/', {
+        const res = await fetch(`${BACKEND_URL}api/user/favorites/`, {
           headers: {
             Authorization: `JWT ${token}`,
           },
         });
         if (!res.ok) throw new Error('Failed to fetch favorites.');
         const data = await res.json();
-        console.log("ninja=== " + data);
-        setFavorites(data);
+
+        const detailedFavorites = await Promise.all(
+          data.map(async (fav: FavoriteItem) => {
+            const endpoint = endpointMap[fav.content_type_str];
+            if (!endpoint) return fav;
+
+            try {
+              const detailRes = await fetch(
+                `${BACKEND_URL}api/${endpoint}/${fav.object_id}/`,
+                {
+                  headers: { Authorization: `JWT ${token}` },
+                }
+              );
+              const detailData: NatureProps = await detailRes.json();
+              return {
+                ...fav,
+                image: detailData.image1 ? `${BACKEND_URL}${detailData.image1}` : null,
+              };
+            } catch {
+              return fav;
+            }
+          })
+        );
+
+        setFavorites(detailedFavorites);
       } catch (err: any) {
         setError(err.message || 'Error loading favorites.');
       } finally {
@@ -38,7 +85,7 @@ export default function ProfilePage() {
     }
 
     if (token) {
-      fetchFavorites();
+      fetchFavoritesWithImages();
     }
   }, [token]);
 
@@ -92,23 +139,33 @@ export default function ProfilePage() {
           ) : (
             <div className="grid gap-4 md:grid-cols-2">
               {favorites.map((fav, i) => (
-                <div
+                <a
                   key={i}
-                  className="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition duration-200"
+                  href={`https://fuzzy-happiness-69wvq6vv665p2rx65-5173.app.github.dev/nature`}
+                  className="block p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition duration-200 bg-white"
                 >
-                  <h3 className="font-semibold text-lg text-blue-600 truncate">{fav.content_object_title || 'Untitled'}</h3>
+                  {fav.image && (
+                    <img
+                      src={fav.image}
+                      alt={fav.content_object_title}
+                      className="w-full h-40 object-cover rounded-md mb-2"
+                    />
+                  )}
+                  <h3 className="font-semibold text-lg text-blue-600 truncate">
+                    {fav.content_object_title || 'Untitled'}
+                  </h3>
                   {fav.content_type_str && (
                     <span className="inline-block mt-2 text-xs bg-blue-100 text-blue-700 rounded-full px-3 py-1">
                       {fav.content_type_str}
                     </span>
                   )}
-                </div>
+                </a>
               ))}
             </div>
           )}
         </div>
 
-        {/* Logout Button */}
+        {/* Logout */}
         <div className="mt-10">
           <button
             onClick={logout}

@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 from corsheaders.defaults import default_headers
-
+from datetime import timedelta
 
 # Define BASE_DIR at the beginning
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -160,7 +160,10 @@ CORS_ALLOW_HEADERS = [
 
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
+
 
 CORS_EXPOSE_HEADERS = [
     "content-disposition",
