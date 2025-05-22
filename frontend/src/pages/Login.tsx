@@ -2,7 +2,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -39,8 +39,9 @@ export default function LoginPage() {
         {({ isSubmitting, errors, touched }) => (
           <Form className="space-y-4">
             <div>
-              <label className="block mb-1">Email</label>
+              <label className="block mb-1" htmlFor="email">Email</label>
               <Field
+                id="email"
                 name="email"
                 type="email"
                 className={`w-full p-2 border ${
@@ -51,8 +52,9 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label className="block mb-1">Password</label>
+              <label className="block mb-1" htmlFor="password">Password</label>
               <Field
+                id="password"
                 name="password"
                 type="password"
                 className={`w-full p-2 border ${
@@ -72,6 +74,13 @@ export default function LoginPage() {
           </Form>
         )}
       </Formik>
+
+      <p className="mt-4 text-center">
+        Don't have an account?{' '}
+        <Link to="/signup" className="text-blue-600 hover:underline">
+          Sign up here
+        </Link>
+      </p>
     </div>
   );
 }

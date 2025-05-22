@@ -139,6 +139,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://glowing-waffle-45qvgwwj5r6cjggq-8000.app.github.dev",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://tourism-bukidnon.pages.dev",
+    "https://tourism.pretendre.space",
 ]
 
 if os.getenv("GITHUB_CODESPACES"):
