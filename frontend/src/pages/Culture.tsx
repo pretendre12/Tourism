@@ -6,7 +6,6 @@ import Loader from './Loader';
 import Navbar from "../components/Navbar";
 import Modal from "../components/ui/culture-modal";
 import { useInView } from "react-intersection-observer";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BACKEND_URL, FRONT_URL } from "../config/config";
 
@@ -159,11 +158,11 @@ const Culture = () => {
                 <h2 className="tienne-black text-white text-4xl md:text-5xl font-extrabold mb-4 text-center">
                 Traditional <span className="font-bold text-yellow-300">Artifacts </span>  & <span className="font-bold text-red-300">Crafts</span>
                 </h2>
-                <Link href={`${FRONT_URL}/articrafts`}>
+                <a href={`${FRONT_URL}/articrafts`}>
                 <button className="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg hover:bg-yellow-400 transition">
                     Explore 
                 </button>
-                </Link>
+                </a>
                 </motion.div>
             </section>
 
@@ -188,11 +187,11 @@ const Culture = () => {
                     <h2 className="text-white tienne-black text-4xl md:text-5xl font-extrabold mb-4 text-center">
                         F E S T I V A L S
                     </h2>
-                    <Link href={`${FRONT_URL}/festival`}>
+                    <a href={`${FRONT_URL}/festival`}>
                         <button className="mt-4 bg-white text-gray-900 px-5 py-0.5 rounded-full shadow-lg hover:bg-yellow-400 transition text-lg w-fit ml-175">
                             Explore
                         </button>
-                    </Link>
+                    </a>
                 </motion.div>
             </section>
 
