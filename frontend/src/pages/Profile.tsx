@@ -106,8 +106,8 @@ export default function ProfilePage() {
               Hello, {username || 'User'}!
             </h1>
             <p className="text-gray-500 text-sm">{email}</p>
-            {/* <p className="text-gray-400 text-xs">Member since: {joined}</p>
-          </div> */}
+            {/* <p className="text-gray-400 text-xs">Member since: {joined}</p> */}
+          </div> 
         </div>
 
         {/* User Info */}
