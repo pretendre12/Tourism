@@ -135,6 +135,8 @@ CORS_ALLOW_CREDENTIALS = True  # If using authentication (cookies or sessions)
 CORS_ALLOWED_ORIGINS = [
     "https://fuzzy-happiness-69wvq6vv665p2rx65-5173.app.github.dev",
     "https://fuzzy-happiness-69wvq6vv665p2rx65-8000.app.github.dev",
+    "https://glowing-waffle-45qvgwwj5r6cjggq-5173.app.github.dev",
+    "https://glowing-waffle-45qvgwwj5r6cjggq-8000.app.github.dev",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]

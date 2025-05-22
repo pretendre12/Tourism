@@ -38,7 +38,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
       
       // Update the API instance with the current token
-      api.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
+      api.defaults.headers.common['Authorization'] = `JWT ${storedToken}`;
       
       // Verify token with backend
       const { data } = await api.get('/user/');
@@ -72,7 +72,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         
         // Set token in state and API headers
         setToken(storedToken);
-        api.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
+        api.defaults.headers.common['Authorization'] = `JWT ${storedToken}`;
         
         // Try to parse stored user data first for quicker UI loading
         const storedUserJson = localStorage.getItem('user');
@@ -131,7 +131,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         localStorage.setItem('user', JSON.stringify(data.user));
         
         // Update application state
-        api.defaults.headers.common['Authorization'] = `Bearer ${tokenValue}`;
+        api.defaults.headers.common['Authorization'] = `JWT ${tokenValue}`;
         setToken(tokenValue);
         setUser(data.user);
       } else {

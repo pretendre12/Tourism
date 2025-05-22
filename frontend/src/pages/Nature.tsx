@@ -58,7 +58,7 @@ const Nature: React.FC = () => {
         {},
         {
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `JWT ${token}`
           }
         }
       );

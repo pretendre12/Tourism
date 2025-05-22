@@ -138,7 +138,7 @@ class CultureViewSet(viewsets.ModelViewSet):
             content_type=content_type,
             object_id=obj.id
         ).first()
-        
+        print(favorite)
         if favorite:
             favorite.delete()
             return Response({'status': 'removed from favorites'})

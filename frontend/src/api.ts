@@ -29,8 +29,8 @@ api.interceptors.response.use(
             
             const newToken = refreshResponse.data.access;
             localStorage.setItem('token', newToken);
-            api.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
-            originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
+            api.defaults.headers.common['Authorization'] = `JWT ${newToken}`;
+            originalRequest.headers['Authorization'] = `JWT ${newToken}`;
             
             // Retry the original request
             return api(originalRequest);

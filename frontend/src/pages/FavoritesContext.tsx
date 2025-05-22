@@ -23,7 +23,7 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
     const fetchFavorites = async () => {
       try {
         const response = await axios.get(`${BACKEND_URL}api/favorites/`, {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+          headers: { Authorization: `JWT ${localStorage.getItem('token')}` }
         });
         setFavorites(response.data.map((item: any) => item.nature_spot));
       } catch (error) {
@@ -39,7 +39,7 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
   const addFavorite = async (id: number) => {
     try {
       await axios.post(`${BACKEND_URL}api/favorites/`, { nature_spot: id }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        headers: { Authorization: `JWT ${localStorage.getItem('token')}` }
       });
       setFavorites([...favorites, id]);
     } catch (error) {
@@ -50,7 +50,7 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
   const removeFavorite = async (id: number) => {
     try {
       await axios.delete(`${BACKEND_URL}api/favorites/${id}/`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        headers: { Authorization: `JWT ${localStorage.getItem('token')}` }
       });
       setFavorites(favorites.filter(favId => favId !== id));
     } catch (error) {
