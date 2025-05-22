@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import BukidnonMap from "./BukidnonMap";
 import Loader from "./Loader";
+import { Link } from "react-router-dom";
 import { BACKEND_URL, FRONT_URL } from "../config/config";
 
 console.log(BACKEND_URL); 
@@ -184,11 +185,11 @@ const Destinations = () => {
             <img src={`${BACKEND_URL}/media/destinations/tribe2.jpeg`} alt="Festival 2" className="w-40 h-30 object-cover" />
             <img src={`${BACKEND_URL}/media/destinations/tribe3.jpeg`} alt="Festival 3" className="w-40 h-30 object-cover" />
           </div>
-          <a href={`${FRONT_URL}culture`}>
+          <Link href={`${FRONT_URL}/culture`}>
           <button className="absolute bottom-10 right-90 bg-gray-200 text-gray-700 px-6 py-2 rounded-full shadow-lg hover:bg-yellow-300 transition">
             Explore
           </button>
-          </a>
+          </Link>
         </motion.div>
       </section>
 
@@ -235,10 +236,11 @@ const Destinations = () => {
           <h6 className="tienne-bold text-white text-2xl font-extrabold mb-4 text-center">
             Indulge in <span className="font-bold text-yellow-300">Authentic</span> Flavors and <span className="font-bold text-yellow-300">Culinary Delights</span>
           </h6>
-
+          <Link href={`${FRONT_URL}/dining`}>
           <button className="mt-4 bg-yellow-300 text-gray-900 px-6 py-2 rounded-full shadow-lg hover:bg-yellow-400 transition">
             Explore Dining Spots
           </button>
+          </Link>
         </motion.div>
       </section>
 

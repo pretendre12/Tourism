@@ -52,7 +52,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 // 🧠 MainLayout wraps routes + layout elements
 const MainLayout: React.FC = () => {
   const location = useLocation();
-  const blacklist = ["/", "/nature", "/destinations", "/thrilling-adventure", "/culture", "/delicacies", "/dining", "/stay", "/about"];
+  const blacklist = ["/", "/nature", "/destinations", "/thrilling-adventure", "/culture", "/delicacies", "/dining", "/stay", "/about", "/articrafts", "/festival"];
   const showLayout = !blacklist.includes(location.pathname);
 
   return (
