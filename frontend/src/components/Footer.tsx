@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaTimesCircle } from "react-icons/fa";
 import { MdPhone, MdEmail } from "react-icons/md";
+import {  FRONT_URL } from "../config/config";
 
-const FRONT_URL = "https://bukidnon-tourism.vercel.app/";
 
 const Footer = () => {
   return (
@@ -26,10 +26,10 @@ const Footer = () => {
           <h3 className="font-semibold text-md mb-2">Quick Links</h3>
           <ul className="text-sm space-y-1">
             <li><a href={`${FRONT_URL}`} className="hover:underline">Home</a></li>
-            <li><a href={`${FRONT_URL}destinations`} className="hover:underline">Destinations</a></li>
-            <li><a href={`${FRONT_URL}nature`} className="hover:underline">Nature Escapes</a></li>
-            <li><a href={`${FRONT_URL}thrilling-adventures`} className="hover:underline">Thrilling Adventures</a></li>
-            <li><a href={`${FRONT_URL}dining`} className="hover:underline">Dining Spots</a></li>
+            <li><a href={`${FRONT_URL}/destinations`} className="hover:underline">Destinations</a></li>
+            <li><a href={`${FRONT_URL}/nature`} className="hover:underline">Nature Escapes</a></li>
+            <li><a href={`${FRONT_URL}/thrilling-adventures`} className="hover:underline">Thrilling Adventures</a></li>
+            <li><a href={`${FRONT_URL}/dining`} className="hover:underline">Dining Spots</a></li>
           </ul>
         </div>
 
@@ -37,9 +37,9 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-md mb-2">Resources</h3>
           <ul className="text-sm space-y-1">
-            <li><a href={`${FRONT_URL}facts`} className="hover:underline">FAQs</a></li>
-            <li><a href={`${FRONT_URL}about`} className="hover:underline">About Us</a></li>
-            <li><a href={`${FRONT_URL}privacy`} className="hover:underline">Privacy Policy</a></li>
+            <li><a href={`${FRONT_URL}/facts`} className="hover:underline">FAQs</a></li>
+            <li><a href={`${FRONT_URL}/about`} className="hover:underline">About Us</a></li>
+            <li><a href={`${FRONT_URL}/privacy`} className="hover:underline">Privacy Policy</a></li>
           </ul>
         </div>
 
