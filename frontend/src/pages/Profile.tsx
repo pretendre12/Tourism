@@ -8,16 +8,7 @@ interface FavoriteItem {
   image?: string;
 }
 
-interface NatureProps {
-  id: number;
-  title: string;
-  description: string;
-  image1: string;
-  image2?: string;
-  image3?: string;
-  highlights: string;
-  is_favorite?: boolean;
-}
+
 
 // Mock data for demonstration
 const mockFavorites: FavoriteItem[] = [
@@ -47,9 +38,9 @@ const mockFavorites: FavoriteItem[] = [
 export default function ProfilePage() {
   // Mock user data
   const user = { email: 'test10@gmail.com', username: 'TestUser' };
-  const [favorites, setFavorites] = useState<FavoriteItem[]>(mockFavorites);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [favorites] = useState<FavoriteItem[]>(mockFavorites);
+  const [loading] = useState(false);
+  const [error] = useState('');
   const [avatarColor, setAvatarColor] = useState('');
   
   const email = user?.email || '';
@@ -147,9 +138,11 @@ export default function ProfilePage() {
               </svg>
               <p className="text-gray-600 text-lg font-medium">You haven't saved any favorites yet.</p>
               <p className="text-gray-500 mt-2 mb-4">Browse our collection and add your favorites!</p>
+              <a href='/nature'>
               <button className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition">
                 Explore now
               </button>
+              </a>
             </div>
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
