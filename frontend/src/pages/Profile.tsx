@@ -26,12 +26,8 @@ export default function ProfilePage() {
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
   const email = user?.email || '';
   const username = user?.username || '';
-  const joined = user?.date_joined
-    ? new Date(user.date_joined).toLocaleDateString()
-    : '';
   const avatarInitial = email.charAt(0).toUpperCase();
   const isAdmin = email.toLowerCase() === 'admin';
 
