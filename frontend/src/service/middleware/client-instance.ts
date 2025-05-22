@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "https://fuzzy-happiness-69wvq6vv665p2rx65-8000.app.github.dev/",
+  baseURL: "https://api1.pretendre.space/",
   headers: {
     "Content-Type": "application/json",
   },

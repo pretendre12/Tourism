@@ -141,7 +141,7 @@ export default function ProfilePage() {
               {favorites.map((fav, i) => (
                 <a
                   key={i}
-                  href={`https://fuzzy-happiness-69wvq6vv665p2rx65-5173.app.github.dev/nature`}
+                  href={`/nature`}
                   className="block p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition duration-200 bg-white"
                 >
                   {fav.image && (

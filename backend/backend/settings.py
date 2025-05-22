@@ -141,6 +141,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "https://tourism-bukidnon.pages.dev",
     "https://tourism.pretendre.space",
+    "https://api1.pretendre.space",
 ]
 
 if os.getenv("GITHUB_CODESPACES"):
