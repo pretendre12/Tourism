@@ -23,7 +23,6 @@ const SignupSchema = Yup.object().shape({
 });
 
 export default function SignupPage() {
-  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (values: SignupFormValues, { setErrors }: any) => {

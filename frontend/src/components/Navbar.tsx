@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const location = useLocation();
-  const { user, logout, token } = useAuth();
+  const { user } = useAuth();
   const email = user?.email || '';
   const avatarInitial = email.charAt(0).toUpperCase();
 

@@ -35,7 +35,7 @@ const Nature: React.FC = () => {
       });
       setNatureSpots(response.data);
       setLoading(false);
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error fetching nature spots:", err);
       setError(err.message || "Failed to load nature spots");
       setLoading(false);

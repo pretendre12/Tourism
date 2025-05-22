@@ -60,13 +60,14 @@ export const FavoritesProvider = ({ children }: { children: React.ReactNode }) =
 
   const isFavorite = (id: number) => favorites.includes(id);
 
-  const handleFavorite = (id: number) => {
-    if (isFavorite(id)) {
-      removeFavorite(id);
-    } else {
-      addFavorite(id);
-    }
-  };
+// const handleFavorite = (id: number) => {
+//     if (isFavorite(id)) {
+//       removeFavorite(id);
+//     } else {
+//       addFavorite(id);
+//     }
+//   };
+
 
   return (
     <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite, isFavorite }}>

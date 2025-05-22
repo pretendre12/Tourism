@@ -2,7 +2,7 @@
 import { createContext, useContext, ReactNode, useState, useEffect } from 'react';
 import api from '../api';
 import axios from 'axios';
-import { BACKEND_URL } from '../config/config';
+
 
 type User = {
   id: number;
