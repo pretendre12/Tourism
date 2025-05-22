@@ -1,4 +1,3 @@
-// pages/LoginPage.tsx
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useAuth } from '../context/AuthContext';
@@ -31,49 +30,52 @@ export default function LoginPage() {
   return (
     <div className="max-w-md mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">Login</h1>
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        validationSchema={LoginSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ isSubmitting, errors, touched }) => (
-          <Form className="space-y-4">
-            <div>
-              <label className="block mb-1" htmlFor="email">Email</label>
-              <Field
-                id="email"
-                name="email"
-                type="email"
-                className={`w-full p-2 border ${
-                  errors.email && touched.email ? 'border-red-500' : 'border-gray-300'
-                } rounded`}
-              />
-              <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-            </div>
 
-            <div>
-              <label className="block mb-1" htmlFor="password">Password</label>
-              <Field
-                id="password"
-                name="password"
-                type="password"
-                className={`w-full p-2 border ${
-                  errors.password && touched.password ? 'border-red-500' : 'border-gray-300'
-                } rounded`}
-              />
-              <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
-            </div>
+      <div className="login-form">
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          validationSchema={LoginSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting, errors, touched }) => (
+            <Form className="space-y-4">
+              <div>
+                <label className="block mb-1" htmlFor="email">Email</label>
+                <Field
+                  id="email"
+                  name="email"
+                  type="email"
+                  className={`w-full p-2 border ${
+                    errors.email && touched.email ? 'border-red-500' : 'border-gray-300'
+                  } rounded`}
+                />
+                <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+              </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:bg-gray-400"
-            >
-              {isSubmitting ? 'Logging in...' : 'Login'}
-            </button>
-          </Form>
-        )}
-      </Formik>
+              <div>
+                <label className="block mb-1" htmlFor="password">Password</label>
+                <Field
+                  id="password"
+                  name="password"
+                  type="password"
+                  className={`w-full p-2 border ${
+                    errors.password && touched.password ? 'border-red-500' : 'border-gray-300'
+                  } rounded`}
+                />
+                <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:bg-gray-400"
+              >
+                {isSubmitting ? 'Logging in...' : 'Login'}
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </div>
 
       <p className="mt-4 text-center">
         Don't have an account?{' '}
