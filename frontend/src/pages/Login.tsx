@@ -28,9 +28,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
-        <h1 className="text-2xl font-bold mb-6 text-center text-blue-800">Login</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="bg-white p-8 rounded-lg shadow-sm w-full max-w-md border border-gray-200">
+        <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">Login</h1>
 
         <Formik
           initialValues={{ email: '', password: '' }}
@@ -38,37 +38,43 @@ export default function LoginPage() {
           onSubmit={handleSubmit}
         >
           {({ isSubmitting, errors, touched }) => (
-            <Form className="space-y-4">
+            <Form className="space-y-6">
               <div>
-                <label className="block mb-1" htmlFor="email">Email</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="email">
+                  Email Address
+                </label>
                 <Field
                   id="email"
                   name="email"
                   type="email"
-                  className={`w-full p-2 border ${
+                  className={`w-full px-4 py-2 rounded-md border ${
                     errors.email && touched.email ? 'border-red-500' : 'border-gray-300'
-                  } rounded`}
+                  } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                  placeholder="Enter your email"
                 />
-                <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+                <ErrorMessage name="email" component="div" className="text-red-500 text-xs mt-1" />
               </div>
 
               <div>
-                <label className="block mb-1" htmlFor="password">Password</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="password">
+                  Password
+                </label>
                 <Field
                   id="password"
                   name="password"
                   type="password"
-                  className={`w-full p-2 border ${
+                  className={`w-full px-4 py-2 rounded-md border ${
                     errors.password && touched.password ? 'border-red-500' : 'border-gray-300'
-                  } rounded`}
+                  } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                  placeholder="Enter your password"
                 />
-                <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+                <ErrorMessage name="password" component="div" className="text-red-500 text-xs mt-1" />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:bg-gray-400"
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 transition-colors"
               >
                 {isSubmitting ? 'Logging in...' : 'Login'}
               </button>
@@ -76,9 +82,9 @@ export default function LoginPage() {
           )}
         </Formik>
 
-        <p className="mt-4 text-center">
+        <p className="mt-6 text-center text-sm text-gray-600">
           Don't have an account?{' '}
-          <Link to="/signup" className="text-blue-600 hover:underline">
+          <Link to="/signup" className="font-medium text-blue-600 hover:text-blue-500">
             Sign up here
           </Link>
         </p>
